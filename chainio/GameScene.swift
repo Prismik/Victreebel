@@ -50,17 +50,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         let touchLocation = touch.location(in: self)
         
-        let projectile = SKSpriteNode(imageNamed: "projectile")
+        let projectile = Projectile()
         projectile.position = player.position
-        projectile.physicsBody = SKPhysicsBody(circleOfRadius: projectile.size.width/2)
-        projectile.physicsBody?.isDynamic = true
-        projectile.physicsBody?.categoryBitMask = PhysicsCategory.Projectile
-        projectile.physicsBody?.contactTestBitMask = PhysicsCategory.Monster
-        projectile.physicsBody?.collisionBitMask = PhysicsCategory.None
-        projectile.physicsBody?.usesPreciseCollisionDetection = true
         
         let offset = touchLocation - projectile.position
-        
         if (offset.x < 0) {
             return
         }
@@ -90,7 +83,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if ((firstBody.categoryBitMask & PhysicsCategory.Monster != 0) &&
             (secondBody.categoryBitMask & PhysicsCategory.Projectile != 0)) {
-            if let monster = firstBody.node as? SKSpriteNode, let
+            if let monster = firstBody.node as? Enemy, let
                 projectile = secondBody.node as? SKSpriteNode {
                 projectileDidCollideWithMonster(projectile: projectile, monster: monster)
             }
@@ -107,12 +100,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func addMonster() {
-        let monster = SKSpriteNode(imageNamed: "monster")
-        monster.physicsBody = SKPhysicsBody(rectangleOf: monster.size)
-        monster.physicsBody?.isDynamic = true
-        monster.physicsBody?.categoryBitMask = PhysicsCategory.Monster
-        monster.physicsBody?.contactTestBitMask = PhysicsCategory.Projectile
-        monster.physicsBody?.collisionBitMask = PhysicsCategory.None
+        let monster = Enemy()
         
         // Determine where to spawn the monster along the Y axis
         let actualY = random(min: monster.size.height/2, max: size.height - monster.size.height/2)
@@ -128,12 +116,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let actionMove = SKAction.move(to: CGPoint(x: -monster.size.width/2, y: actualY), duration: TimeInterval(actualDuration))
         let actionMoveDone = SKAction.removeFromParent()
         monster.run(SKAction.sequence([actionMove, actionMoveDone]))
-        
     }
 
-    func projectileDidCollideWithMonster(projectile: SKSpriteNode, monster: SKSpriteNode) {
+    func projectileDidCollideWithMonster(projectile: SKSpriteNode, monster: Enemy) {
         projectile.removeFromParent()
-        addChild(Explosion(position: monster.position))
-        monster.removeFromParent()
+        monster.destroy()
+    }
+    
+    func explosionDidCollideWithMonster(){
+        
     }
 }

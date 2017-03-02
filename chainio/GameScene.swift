@@ -15,6 +15,7 @@ struct PhysicsCategory {
     static let All       : UInt32 = UInt32.max
     static let Monster   : UInt32 = 0b1       // 1
     static let Projectile: UInt32 = 0b10      // 2
+    static let Explosion : UInt32 = 0b100     // 4
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
@@ -34,7 +35,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         run(SKAction.repeatForever(
             SKAction.sequence([
                 SKAction.run(addMonster),
-                SKAction.wait(forDuration: 1.0)
+                SKAction.wait(forDuration: 0.1)
                 ])
         ))
         
@@ -81,14 +82,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             secondBody = contact.bodyA
         }
         
-        if ((firstBody.categoryBitMask & PhysicsCategory.Monster != 0) &&
-            (secondBody.categoryBitMask & PhysicsCategory.Projectile != 0)) {
+        if shouldHandleCollision(firstBitMask: firstBody.categoryBitMask, secondBitMask: secondBody.categoryBitMask) {
             if let monster = firstBody.node as? Enemy, let
-                projectile = secondBody.node as? SKSpriteNode {
-                projectileDidCollideWithMonster(projectile: projectile, monster: monster)
+                entity = secondBody.node as? SKSpriteNode {
+                entityDidCollideWithMonster(entity: entity, monster: monster)
             }
         }
         
+    }
+    
+    private func shouldHandleCollision(firstBitMask: UInt32, secondBitMask: UInt32) -> Bool {
+        return firstBitMask & PhysicsCategory.Monster != 0 &&
+            (secondBitMask & PhysicsCategory.Projectile != 0 || secondBitMask & PhysicsCategory.Explosion != 0)
     }
     
     func random() -> CGFloat {
@@ -118,12 +123,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         monster.run(SKAction.sequence([actionMove, actionMoveDone]))
     }
 
-    func projectileDidCollideWithMonster(projectile: SKSpriteNode, monster: Enemy) {
-        projectile.removeFromParent()
-        monster.destroy()
-    }
-    
-    func explosionDidCollideWithMonster(){
+    func entityDidCollideWithMonster(entity: SKSpriteNode, monster: Enemy) {
+        if let projectile = entity as? Projectile {
+            projectile.removeFromParent()
+        }
         
+        monster.destroy()
     }
 }

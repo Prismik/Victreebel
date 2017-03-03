@@ -14,6 +14,7 @@ class Explosion: SKSpriteNode {
     private static var textures: [SKTexture] = []
     private static var count: Int = 0
     
+    private(set) var multiplier: Int = 1
     public class func loadTextures() {
         Explosion.atlas = SKTextureAtlas(named: "explosion.atlas")
         for i in 1...Explosion.atlas!.textureNames.count {
@@ -22,8 +23,9 @@ class Explosion: SKSpriteNode {
         }
     }
     
-    init() {
+    init(multiplier: Int) {
         let texture = Explosion.textures[0]
+        self.multiplier = multiplier
         super.init(texture: texture, color: SKColor.clear, size: texture.size())
         
         self.physicsBody = SKPhysicsBody(circleOfRadius: self.size.width/2)

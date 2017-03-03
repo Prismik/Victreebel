@@ -14,7 +14,7 @@ class Enemy: SKSpriteNode {
     private static var textures: [SKTexture] = []
     private static var count: Int = 0
     
-    public var score: Int = 100
+    private(set) var score: Int = 100
     public class func loadTextures() {
         /*
         Enemy.atlas = SKTextureAtlas(named: "explosion.atlas")
@@ -40,8 +40,8 @@ class Enemy: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func destroy(pointsRewarded: Int) {
-        let explosion = Explosion()
+    public func destroy(pointsRewarded: Int, multiplier: Int) {
+        let explosion = Explosion(multiplier: multiplier)
         explosion.position = self.position
         self.scene?.addChild(explosion)
         

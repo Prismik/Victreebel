@@ -19,8 +19,9 @@ struct PhysicsCategory {
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
+    private static let baseMultiplier: Int = 1
+    
     var score: Int = 0
-    var multiplier: Int = 1
     let player = SKSpriteNode(imageNamed: "Spaceship")
     
     override func didMove(to view: SKView) {
@@ -125,14 +126,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         monster.run(SKAction.sequence([actionMove, actionMoveDone]))
     }
 
+    // TODO Decide if using preset explosion patterns of ennemies with clickable nodes that propagate explosion to another enemy
+    //      OR
+    //      Explosion as it is with the 5th explosion being clickable to do a bigger explosion
+    //      OR
+    //      Using enemies with special explosions
     func entityDidCollideWithMonster(entity: SKSpriteNode, monster: Enemy) {
+        var multiplier: Int = GameScene.baseMultiplier
         if let projectile = entity as? Projectile {
             projectile.removeFromParent()
         }
+        else if let explosion = entity as? Explosion {
+            multiplier = explosion.multiplier + 1
+        }
         
-        let additionalScore: Int = monster.score * self.multiplier
+        let additionalScore: Int = monster.score * multiplier
         self.score += additionalScore
         
-        monster.destroy(pointsRewarded: additionalScore)
+        monster.destroy(pointsRewarded: additionalScore, multiplier: multiplier)
     }
 }

@@ -16,7 +16,7 @@ class Points: SKLabelNode {
     
     init(score: Int) {
         super.init(fontNamed: "HelveticaNeue-Medium")
-        self.text = String(score)
+        self.text = "+\(score)"
         self.fontSize = 14.0
         self.fontColor = UIColor.blue
         self.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.center
@@ -28,8 +28,8 @@ class Points: SKLabelNode {
     }
     
     public func animate() {
-        let fadeout: SKAction = SKAction.fadeOut(withDuration: 1)
-        let movement: SKAction = SKAction.moveBy(x: 0, y: 15, duration: 1)
+        let fadeout: SKAction = SKAction.fadeOut(withDuration: 0.5)
+        let movement: SKAction = SKAction.moveBy(x: 0, y: 10, duration: 0.5)
         let group: SKAction = SKAction.group([fadeout, movement])
         self.run(group, completion: {
             self.removeFromParent()

@@ -40,8 +40,16 @@ class Enemy: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func destroy() {
-        self.scene?.addChild(Explosion(position: self.position))
+    public func destroy(pointsRewarded: Int) {
+        let explosion = Explosion()
+        explosion.position = self.position
+        self.scene?.addChild(explosion)
+        
+        let points = Points(score: pointsRewarded)
+        points.position = self.position
+        self.scene?.addChild(points)
+        points.animate()
+        
         self.removeFromParent()
     }
 }

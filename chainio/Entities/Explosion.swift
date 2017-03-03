@@ -22,10 +22,9 @@ class Explosion: SKSpriteNode {
         }
     }
     
-    init(position: CGPoint) {
+    init() {
         let texture = Explosion.textures[0]
         super.init(texture: texture, color: SKColor.clear, size: texture.size())
-        self.position = position
         
         self.physicsBody = SKPhysicsBody(circleOfRadius: self.size.width/2)
         self.physicsBody?.isDynamic = true

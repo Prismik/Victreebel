@@ -130,13 +130,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             projectile.removeFromParent()
         }
         
-        let additionalScore: Int = 10 * self.multiplier
+        let additionalScore: Int = monster.score * self.multiplier
         self.score += additionalScore
         
-        let points = Points(score: additionalScore)
-        points.position = monster.position
-        addChild(points)
-        points.animate()
-        monster.destroy()
+        monster.destroy(pointsRewarded: additionalScore)
     }
 }

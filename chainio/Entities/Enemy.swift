@@ -14,6 +14,7 @@ class Enemy: SKSpriteNode {
     private static var textures: [SKTexture] = []
     private static var count: Int = 0
     
+    public var score: Int = 100
     public class func loadTextures() {
         /*
         Enemy.atlas = SKTextureAtlas(named: "explosion.atlas")

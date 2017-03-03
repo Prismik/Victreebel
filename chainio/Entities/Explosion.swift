@@ -20,7 +20,6 @@ class Explosion: SKSpriteNode {
             let name = "explosion_\(i).png"
             Explosion.textures.append(SKTexture(imageNamed: name))
         }
-    
     }
     
     init(position: CGPoint) {

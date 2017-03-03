@@ -19,8 +19,10 @@ struct PhysicsCategory {
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
-    
+    var score: Int = 0
+    var multiplier: Int = 1
     let player = SKSpriteNode(imageNamed: "Spaceship")
+    
     override func didMove(to view: SKView) {
         self.backgroundColor = SKColor.white
         self.player.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
@@ -128,6 +130,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             projectile.removeFromParent()
         }
         
+        let additionalScore: Int = 10 * self.multiplier
+        self.score += additionalScore
+        
+        let points = Points(score: additionalScore)
+        points.position = monster.position
+        addChild(points)
+        points.animate()
         monster.destroy()
     }
 }

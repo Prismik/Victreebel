@@ -16,18 +16,17 @@ class Enemy: SKSpriteNode {
     
     private(set) var score: Int = 100
     public class func loadTextures() {
-        /*
-        Enemy.atlas = SKTextureAtlas(named: "explosion.atlas")
+        Enemy.atlas = SKTextureAtlas(named: "enemies.atlas")
         for i in 1...Enemy.atlas!.textureNames.count {
             let name = "enemy\(i).png"
-            Explosion.textures.append(SKTexture(imageNamed: name))
+            Enemy.textures.append(SKTexture(imageNamed: name))
         }
-        */
     }
     
     init() {
-        let texture = SKTexture(imageNamed: "monster")
-        super.init(texture: texture, color: SKColor.clear, size: texture.size())
+        let index: Int = Int(Utils.random(min: 1, max: 3))
+        let texture = Enemy.atlas!.textureNamed("enemy_\(index).png")
+        super.init(texture: texture, color: SKColor.clear, size: CGSize(width: 15, height: 15) /*texture.size()*/)
         
         self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
         self.physicsBody?.isDynamic = true

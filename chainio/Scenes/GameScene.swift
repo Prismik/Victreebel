@@ -22,14 +22,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private static let baseMultiplier: Int = 1
     
     var score: Int = 0
-    let player = Player()
+    let player: Player = Player()
+    var weapons: WeaponRail!
     
     // SKScene function (entry point)
     override func didMove(to view: SKView) {
         self.backgroundColor = SKColor.white
-        self.player.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
+    
+        self.weapons = WeaponRail(parent: self)
+        self.addChild(weapons)
         
-        
+        self.player.position = self.weapons.activeTurret!.position
         self.addChild(player)
         
         self.physicsWorld.gravity = CGVector.zero
@@ -53,26 +56,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         guard let touch = touches.first else {
             return
         }
-        let touchLocation = touch.location(in: self)
         
-        let projectile = Projectile()
-        projectile.position = player.position
-        
-        let offset = touchLocation - projectile.position
-        if (offset.x < 0) {
-            return
-        }
-        
-        addChild(projectile)
-        
-        let direction = offset.normalized()
-        let shootAmount = direction * 1000
-        let finalDestination = shootAmount + projectile.position
-        
-        let actionMove = SKAction.move(to: finalDestination, duration: 2.0)
-        let actionMoveDone = SKAction.removeFromParent()
-        projectile.run(SKAction.sequence([actionMove, actionMoveDone]))
-        run(SKAction.playSoundFileNamed("pew-pew-lei.caf", waitForCompletion: false))
+        self.weapons.shoot()
     }
     
     //SKPhysicsContactDelegate

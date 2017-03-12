@@ -19,6 +19,7 @@ class GameViewController: UIViewController {
         // Load static textures
         Explosion.loadTextures()
         Enemy.loadTextures()
+        Turret.loadTextures()
         
         let skView = view as! SKView
         skView.showsFPS = true

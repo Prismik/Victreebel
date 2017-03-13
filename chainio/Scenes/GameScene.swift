@@ -22,7 +22,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private static let baseMultiplier: Int = 1
     
     var score: Int = 0
-    let player: Player = Player()
+    var player: Player!
     var weapons: WeaponRail!
     
     // SKScene function (entry point)
@@ -32,6 +32,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.weapons = WeaponRail(parent: self)
         self.addChild(weapons)
         
+        self.player = Player(movementDelegate: self.weapons)
         self.player.position = self.weapons.activeTurret!.position
         self.addChild(player)
         
@@ -40,7 +41,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         run(SKAction.repeatForever(
             SKAction.sequence([
-        //        SKAction.run(addMonster),
+                SKAction.run(addMonster),
                 SKAction.wait(forDuration: 0.1)
                 ])
         ))
@@ -90,19 +91,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let monster = Enemy()
         
         // Determine where to spawn the monster along the Y axis
-        let actualY = Utils.random(min: monster.size.height/2, max: size.height - monster.size.height/2)
+        let y = Utils.random(min: 0, max: 3)
+        let actualY = self.weapons.turrets[Int(y)].position.y + Utils.random(min: -1, max: 1)
         
-        // Position the monster slightly off-screen along the right edge,
-        // and along a random position along the Y axis as calculated above
         monster.position = CGPoint(x: size.width + monster.size.width/2, y: actualY)
         addChild(monster)
         
-        // Determine speed of the monster
-        let actualDuration = Utils.random(min: CGFloat(2.0), max: CGFloat(4.0))
-        
-        let actionMove = SKAction.move(to: CGPoint(x: -monster.size.width/2, y: actualY), duration: TimeInterval(actualDuration))
-        let actionMoveDone = SKAction.removeFromParent()
-        monster.run(SKAction.sequence([actionMove, actionMoveDone]))
+        let move: SKAction = SKAction.move(to: CGPoint(x: -monster.size.width/2, y: actualY), duration: TimeInterval(4.0))
+        let oscillate: SKAction = SKAction.repeat(SKAction.oscillation(amplitude: 10.0, timePeriod: 1.5, midPoint: monster.position), count: 5)
+        let actionGroup: SKAction = SKAction.group([move, oscillate])
+        let actionsDone: SKAction = SKAction.removeFromParent()
+        monster.run(SKAction.sequence([actionGroup, actionsDone]))
     }
 
     // TODO Decide if using preset explosion patterns of ennemies with clickable nodes that propagate explosion to another enemy

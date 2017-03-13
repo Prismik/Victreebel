@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-class WeaponRail: SKSpriteNode {
+class WeaponRail: SKSpriteNode, PlayerMovementDelegate {
     var activeTurret: Turret?
     var turrets: [Turret] = []
     
@@ -31,11 +31,60 @@ class WeaponRail: SKSpriteNode {
         self.activeTurret = self.turrets.first
     }
     
-    public func shoot() {
-        self.activeTurret?.shoot()
-    }
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    
+    // TODO Check why mopvement is not uccuring properly after the first player drag
+    func playerDidMove(player: Player, at direction: Int) {
+        if direction > 0 {
+            if let turret = self.nextTurret() {
+                self.activeTurret = turret
+            }
+        }
+        else {
+            if let turret = self.previousTurret() {
+                self.activeTurret = turret
+            }
+        }
+        
+        let actionMove: SKAction = SKAction.moveTo(y: activeTurret!.position.y, duration: TimeInterval(0.5))
+        actionMove.timingMode = SKActionTimingMode.easeInEaseOut
+        player.run(actionMove)
+    }
+    
+    public func shoot() {
+        self.activeTurret?.shoot()
+    }
+
+    private func currentIndex() -> Int? {
+        if let turret = self.activeTurret, let currentIndex = self.turrets.index(of: turret) {
+            return currentIndex
+        }
+        
+        return nil
+    }
+    
+    private func nextTurret() -> Turret? {
+        if let index = self.currentIndex() {
+            if index + 1 < self.turrets.count {
+                return self.turrets[index + 1]
+            }
+        }
+        
+        return nil
+    }
+    
+    private func previousTurret() -> Turret? {
+        if let index = self.currentIndex() {
+            if index - 1 >= 0 {
+                return self.turrets[index - 1]
+            }
+        }
+        
+        return nil
+    }
+    
+    
 }

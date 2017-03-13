@@ -12,7 +12,10 @@ import SpriteKit
 class Player: SKSpriteNode {
     private(set) var isSelected: Bool = false
     private(set) var pullForce: CGFloat = 0
-    init() {
+    private var delegate: PlayerMovementDelegate
+    
+    init(movementDelegate: PlayerMovementDelegate) {
+        self.delegate = movementDelegate
         let texture = SKTexture(imageNamed: "Spaceship")
         super.init(texture: texture, color: SKColor.clear, size: CGSize(width: 25, height: 25) /*texture.size()*/)
         self.zRotation = -CGFloat.pi / 2
@@ -37,9 +40,11 @@ class Player: SKSpriteNode {
             }
             
             let touchLocation: CGPoint = touch.location(in: self.parent!)
-            self.pullForce = abs(self.position.y - touchLocation.y)
+            let difference: CGFloat = self.position.y - touchLocation.y
+            self.pullForce = abs(difference)
             if self.pullForce > 25 {
-                self.position = CGPoint(x: self.position.x, y: touchLocation.y)
+                let direction: Int = difference > 0 ? -1 : 1 // Is the difference positive or negative
+                self.delegate.playerDidMove(player: self, at: direction)
                 self.isSelected = false
             }
         }
@@ -48,4 +53,8 @@ class Player: SKSpriteNode {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.isSelected = false
     }
+}
+
+protocol PlayerMovementDelegate {
+    func playerDidMove(player: Player, at direction: Int)
 }

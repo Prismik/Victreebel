@@ -13,6 +13,8 @@ class WeaponRail: SKSpriteNode, PlayerMovementDelegate {
     var activeTurret: Turret?
     var turrets: [Turret] = []
     
+    private var energyDisplacer: SKSpriteNode?
+    
     init(parent: SKScene) {
         let texture = SKTexture()
         super.init(texture: texture, color: SKColor.clear, size: CGSize(width: 25, height: parent.size.height))
@@ -35,23 +37,37 @@ class WeaponRail: SKSpriteNode, PlayerMovementDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    // TODO Check why mopvement is not uccuring properly after the first player drag
-    func playerDidMove(player: Player, at direction: Int) {
-        if direction > 0 {
+    // TODO Semitransparent showing neonlike effect filling on drag & releasing on playerMove
+    func playerDidMove(player: Player, at direction: PlayerMovementDirections) {
+        self.energyDisplacer?.removeFromParent()
+        if direction == .Up {
             if let turret = self.nextTurret() {
+                self.energyDisplacer = SKSpriteNode(texture: SKTexture(), color: SKColor.orange, size: CGSize(width: 25, height: turret.position.y - self.activeTurret!.position.y))
+                self.energyDisplacer!.position = self.activeTurret!.position
                 self.activeTurret = turret
             }
         }
         else {
             if let turret = self.previousTurret() {
+                self.energyDisplacer = SKSpriteNode(texture: SKTexture(), color: SKColor.orange, size: CGSize(width: 25, height: turret.position.y - self.activeTurret!.position.y))
                 self.activeTurret = turret
+                self.energyDisplacer!.position = self.activeTurret!.position
             }
         }
         
+        self.addChild(self.energyDisplacer!)
         let actionMove: SKAction = SKAction.moveTo(y: activeTurret!.position.y, duration: TimeInterval(0.5))
         actionMove.timingMode = SKActionTimingMode.easeInEaseOut
         player.run(actionMove)
+    }
+    
+    func playerCanMove(player: Player, at direction: PlayerMovementDirections) -> Bool {
+        if direction == .Up {
+            return self.currentIndex() != 3
+        }
+        else {
+            return self.currentIndex() != 0
+        }
     }
     
     public func shoot() {

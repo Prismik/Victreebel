@@ -19,7 +19,7 @@ class MainMenuScene: SKScene {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         let gameplayScene: SKScene = GameScene(size: self.view!.bounds.size)
-        let duration: TimeInterval = 2.0
+        let duration: TimeInterval = 1.0
         let flipTransition: SKTransition = SKTransition.push(with: SKTransitionDirection.down, duration: duration)
         self.view!.presentScene(gameplayScene, transition: flipTransition)
     }

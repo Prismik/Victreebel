@@ -9,6 +9,11 @@
 import Foundation
 import SpriteKit
 
+enum PlayerMovementDirections {
+    case Up
+    case Down
+}
+
 class Player: SKSpriteNode {
     private(set) var isSelected: Bool = false
     private(set) var pullForce: CGFloat = 0
@@ -21,6 +26,7 @@ class Player: SKSpriteNode {
         self.zRotation = -CGFloat.pi / 2
         self.isUserInteractionEnabled = true
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5) // Center the anchor
+        //self.addGlow()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -43,7 +49,7 @@ class Player: SKSpriteNode {
             let difference: CGFloat = self.position.y - touchLocation.y
             self.pullForce = abs(difference)
             if self.pullForce > 25 {
-                let direction: Int = difference > 0 ? -1 : 1 // Is the difference positive or negative
+                let direction: PlayerMovementDirections = difference > 0 ? .Down : .Up // Is the difference positive or negative
                 self.delegate.playerDidMove(player: self, at: direction)
                 self.isSelected = false
             }
@@ -53,8 +59,19 @@ class Player: SKSpriteNode {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.isSelected = false
     }
+    
+    // TODO Seems not to be working
+    //      Put into generic extension
+    private func addGlow(radius: Float = 5) {
+        let effectNode = SKEffectNode()
+        effectNode.shouldRasterize = true
+        addChild(effectNode)
+        effectNode.addChild(SKSpriteNode(texture: self.texture))
+        effectNode.filter = CIFilter(name: "CIGaussianBlur", withInputParameters: ["inputRadius":radius])
+    }
 }
 
 protocol PlayerMovementDelegate {
-    func playerDidMove(player: Player, at direction: Int)
+    func playerDidMove(player: Player, at direction: PlayerMovementDirections)
+    func playerCanMove(player: Player, at direction: PlayerMovementDirections) -> Bool
 }

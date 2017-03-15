@@ -1,5 +1,5 @@
 //
-//  WaveMovementBehaviour.swift
+//  Dashboard.swift
 //  chainio
 //
 //  Created by Francis Beauchamp on 2017-03-13.
@@ -7,3 +7,8 @@
 //
 
 import Foundation
+import SpriteKit
+
+class DashBoard: SKSpriteNode {
+    
+}

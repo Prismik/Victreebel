@@ -27,7 +27,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // SKScene function (entry point)
     override func didMove(to view: SKView) {
-        self.backgroundColor = SKColor.white
+        self.backgroundColor = SKColor.black
     
         self.weapons = WeaponRail(parent: self)
         self.addChild(weapons)
@@ -39,16 +39,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.gravity = CGVector.zero
         self.physicsWorld.contactDelegate = self
         
+        /*
         run(SKAction.repeatForever(
             SKAction.sequence([
                 SKAction.run(addMonster),
                 SKAction.wait(forDuration: 0.1)
                 ])
         ))
+         */
         
-        let backgroundMusic = SKAudioNode(fileNamed: "background-music-aac.caf")
-        backgroundMusic.autoplayLooped = true
-        addChild(backgroundMusic)
+        //let backgroundMusic = SKAudioNode(fileNamed: "background-music-aac.caf")
+        //backgroundMusic.autoplayLooped = true
+        //addChild(backgroundMusic)
     }
     
     // SKNode function
@@ -98,18 +100,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(monster)
         
         let move: SKAction = SKAction.move(to: CGPoint(x: -monster.size.width/2, y: actualY), duration: TimeInterval(4.0))
-        let oscillate: SKAction = SKAction.repeat(SKAction.oscillation(amplitude: 10.0, timePeriod: 1.5, midPoint: monster.position), count: 5)
-        let actionGroup: SKAction = SKAction.group([move, oscillate])
+        //let oscillate: SKAction = SKAction.repeat(SKAction.oscillation(amplitude: 10.0, timePeriod: 1.5, midPoint: monster.position), count: 5)
+        //let actionGroup: SKAction = SKAction.group([move, oscillate])
         let actionsDone: SKAction = SKAction.removeFromParent()
-        monster.run(SKAction.sequence([actionGroup, actionsDone]))
+        monster.run(SKAction.sequence([move, actionsDone]))
     }
 
     // TODO Decide if using preset explosion patterns of ennemies with clickable nodes that propagate explosion to another enemy
     //      OR
     //      Using enemies with special explosions
-    //      OR
-    //      Pause mode to prepare shooting of different projectiles strategically
-    //      
+    
     //      Remove the main story board and replace by SKPhysicsContactDelegate
     /*
              override func viewDidLoad() {

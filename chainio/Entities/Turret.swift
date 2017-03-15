@@ -37,6 +37,8 @@ class Turret: SKSpriteNode {
         let actionMove = SKAction.move(to: finalDestination, duration: 2.0)
         let actionMoveDone = SKAction.removeFromParent()
         projectile.run(SKAction.sequence([actionMove, actionMoveDone]))
-        run(SKAction.playSoundFileNamed("pew-pew-lei.caf", waitForCompletion: false))
+        
+        // TODO Each projectile should have their own sound / image associated with it
+        run(SKAction.playSoundFileNamed("laser.wav", waitForCompletion: false))
     }
 }

@@ -31,8 +31,9 @@ class Enemy: SKSpriteNode {
         self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
         self.physicsBody?.isDynamic = true
         self.physicsBody?.categoryBitMask = PhysicsCategory.Monster
-        self.physicsBody?.contactTestBitMask = PhysicsCategory.Projectile
+        self.physicsBody?.contactTestBitMask = PhysicsCategory.None
         self.physicsBody?.collisionBitMask = PhysicsCategory.None
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

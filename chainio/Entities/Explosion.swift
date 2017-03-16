@@ -33,7 +33,6 @@ class Explosion: SKSpriteNode {
         self.physicsBody?.categoryBitMask = PhysicsCategory.Explosion
         self.physicsBody?.contactTestBitMask = PhysicsCategory.Monster
         self.physicsBody?.collisionBitMask = PhysicsCategory.None
-        self.physicsBody?.usesPreciseCollisionDetection = true
         
         self.detonate()
     }
@@ -52,6 +51,8 @@ class Explosion: SKSpriteNode {
     }
     
     private func detonate() {
+        let random: Int = Int(round(Utils.random(min: 1, max: 3)))
+        run(SKAction.playSoundFileNamed("explosion_\(random).wav", waitForCompletion: false))
         self.run(SKAction.animate(with: Explosion.textures, timePerFrame: 0.05), completion: {
             self.removeFromParent()
         })

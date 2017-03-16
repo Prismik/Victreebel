@@ -17,15 +17,15 @@ enum PlayerMovementDirections {
 class Player: SKSpriteNode {
     private(set) var isSelected: Bool = false
     private(set) var pullForce: CGFloat = 0
-    private var delegate: PlayerMovementDelegate
+    public weak var delegate: PlayerMovementDelegate?
     
-    init(movementDelegate: PlayerMovementDelegate) {
-        self.delegate = movementDelegate
+    init() {
         let texture = SKTexture(imageNamed: "Spaceship")
         super.init(texture: texture, color: SKColor.clear, size: CGSize(width: 25, height: 25) /*texture.size()*/)
         self.zRotation = -CGFloat.pi / 2
         self.isUserInteractionEnabled = true
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5) // Center the anchor
+        self.zPosition = 3
         //self.addGlow()
     }
     
@@ -47,31 +47,28 @@ class Player: SKSpriteNode {
             
             let touchLocation: CGPoint = touch.location(in: self.parent!)
             let difference: CGFloat = self.position.y - touchLocation.y
+            let direction: PlayerMovementDirections = difference > 0 ? .Down : .Up // Is the difference positive or negative
             self.pullForce = abs(difference)
+            self.delegate?.playerDidPull(player: self, at: direction)
             if self.pullForce > 25 {
-                let direction: PlayerMovementDirections = difference > 0 ? .Down : .Up // Is the difference positive or negative
-                self.delegate.playerDidMove(player: self, at: direction)
+                if self.delegate?.playerCanMove(player: self, at: direction) ?? false { // defaults to false if delegate is nil
+                    self.delegate?.playerDidMove(player: self, at: direction)
+                }
+                
                 self.isSelected = false
             }
         }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.delegate?.playerDidRelease(player: self)
         self.isSelected = false
-    }
-    
-    // TODO Seems not to be working
-    //      Put into generic extension
-    private func addGlow(radius: Float = 5) {
-        let effectNode = SKEffectNode()
-        effectNode.shouldRasterize = true
-        addChild(effectNode)
-        effectNode.addChild(SKSpriteNode(texture: self.texture))
-        effectNode.filter = CIFilter(name: "CIGaussianBlur", withInputParameters: ["inputRadius":radius])
     }
 }
 
-protocol PlayerMovementDelegate {
+protocol PlayerMovementDelegate: class {
+    func playerDidRelease(player: Player)
+    func playerDidPull(player: Player, at direction: PlayerMovementDirections)
     func playerDidMove(player: Player, at direction: PlayerMovementDirections)
     func playerCanMove(player: Player, at direction: PlayerMovementDirections) -> Bool
 }

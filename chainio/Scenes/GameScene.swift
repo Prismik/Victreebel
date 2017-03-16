@@ -32,25 +32,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.weapons = WeaponRail(parent: self)
         self.addChild(weapons)
         
-        self.player = Player(movementDelegate: self.weapons)
+        self.player = Player()
         self.player.position = self.weapons.activeTurret!.position
+        self.player.delegate = self.weapons
         self.addChild(player)
         
         self.physicsWorld.gravity = CGVector.zero
         self.physicsWorld.contactDelegate = self
         
-        /*
         run(SKAction.repeatForever(
             SKAction.sequence([
                 SKAction.run(addMonster),
-                SKAction.wait(forDuration: 0.1)
+                SKAction.wait(forDuration: 0.7)
                 ])
         ))
-         */
+ 
         
-        //let backgroundMusic = SKAudioNode(fileNamed: "background-music-aac.caf")
-        //backgroundMusic.autoplayLooped = true
-        //addChild(backgroundMusic)
+        let backgroundMusic = SKAudioNode(fileNamed: "background-music-aac.caf")
+        backgroundMusic.autoplayLooped = true
+        addChild(backgroundMusic)
     }
     
     // SKNode function
@@ -62,6 +62,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.weapons.shoot()
     }
+    
     
     //SKPhysicsContactDelegate
     func didBegin(_ contact: SKPhysicsContact) {

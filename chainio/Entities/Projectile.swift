@@ -25,10 +25,13 @@ class Projectile: SKSpriteNode {
     }
     
     init() {
-        let texture = SKTexture(imageNamed: "projectile")
+        let texture = SKTexture(imageNamed: "laser")
         super.init(texture: texture, color: SKColor.clear, size: texture.size())
         
-        self.physicsBody = SKPhysicsBody(circleOfRadius: self.size.width/2)
+        self.setScale(0.2)
+        self.zRotation = CGFloat.pi / 2
+        
+        self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
         self.physicsBody?.isDynamic = true
         self.physicsBody?.categoryBitMask = PhysicsCategory.Projectile
         self.physicsBody?.contactTestBitMask = PhysicsCategory.Monster

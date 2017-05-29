@@ -23,14 +23,17 @@ class Projectile: SKSpriteNode {
          }
          */
     }
-    
+
+    public var canPropagate: Bool = true
+
     init() {
         let texture = SKTexture(imageNamed: "laser")
         super.init(texture: texture, color: SKColor.clear, size: texture.size())
-        
+
+        self.name = "projectile"
         self.setScale(0.2)
         self.zRotation = CGFloat.pi / 2
-        
+        self.isUserInteractionEnabled = true
         self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
         self.physicsBody?.isDynamic = true
         self.physicsBody?.categoryBitMask = PhysicsCategory.Projectile
@@ -42,8 +45,30 @@ class Projectile: SKSpriteNode {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if self.canPropagate {
+            propagate()
+        }
+    }
+
+    public func update(_ currentTime: TimeInterval) {
+        if let scene = self.scene {
+            if !scene.contains(self.position) {
+                self.removeFromParent()
+            }
+        }
+    }
     
     public func destroy() {
+        self.removeFromParent()
+    }
+
+    private func propagate() {
+        ProjectileManager.addProjectile(at: self.position, towards: CGVector(dx: 0, dy: 150))
+        ProjectileManager.addProjectile(at: self.position, towards: CGVector(dx: 0, dy: -150))
+        ProjectileManager.addProjectile(at: self.position, towards: CGVector(dx: 150, dy: 150))
+        ProjectileManager.addProjectile(at: self.position, towards: CGVector(dx: 150, dy: -150))
         self.removeFromParent()
     }
 }

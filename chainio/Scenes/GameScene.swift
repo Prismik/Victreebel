@@ -39,7 +39,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.physicsWorld.gravity = CGVector.zero
         self.physicsWorld.contactDelegate = self
-        
+
+        ProjectileManager.scene = self
+
         run(SKAction.repeatForever(
             SKAction.sequence([
                 SKAction.run(addMonster),
@@ -52,7 +54,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         backgroundMusic.autoplayLooped = true
         addChild(backgroundMusic)
     }
-    
+
+    override func update(_ currentTime: TimeInterval) {
+        ProjectileManager.update(currentTime)
+    }
+
     // SKNode function
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         // 1 - Choose one of the touches to work with

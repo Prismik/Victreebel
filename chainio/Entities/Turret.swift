@@ -27,17 +27,8 @@ class Turret: SKSpriteNode {
     }
     
     public func shoot() {
-        let projectile = Projectile()
-        projectile.position = self.position
-        
-        self.scene?.addChild(projectile)
-        
-        let finalDestination = CGPoint(x: 1000, y: self.position.y)
-        
-        let actionMove = SKAction.move(to: finalDestination, duration: 2.0)
-        let actionMoveDone = SKAction.removeFromParent()
-        projectile.run(SKAction.sequence([actionMove, actionMoveDone]))
-        
+        ProjectileManager.addProjectile(at: self.position, towards: CGVector(dx: 400, dy: 0))
+
         // TODO Each projectile should have their own sound / image associated with it
         run(SKAction.playSoundFileNamed("laser.wav", waitForCompletion: false))
     }

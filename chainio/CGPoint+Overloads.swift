@@ -33,7 +33,7 @@ func / (point: CGPoint, scalar: CGFloat) -> CGPoint {
 
 extension CGPoint {
     func length() -> CGFloat {
-        return sqrt(x*x + y*y)
+        return sqrt(x * x + y * y)
     }
     
     func normalized() -> CGPoint {

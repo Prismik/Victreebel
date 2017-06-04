@@ -13,8 +13,9 @@ class Enemy: SKSpriteNode {
     private static var atlas: SKTextureAtlas? = nil
     private static var textures: [SKTexture] = []
     private static var count: Int = 0
-    
+
     private(set) var score: Int = 100
+    
     public class func loadTextures() {
         Enemy.atlas = SKTextureAtlas(named: "enemies.atlas")
         for i in 1...Enemy.atlas!.textureNames.count {
@@ -27,20 +28,35 @@ class Enemy: SKSpriteNode {
         let index: Int = Int(Utils.random(min: 1, max: 3))
         let texture = Enemy.atlas!.textureNamed("enemy_\(index).png")
         super.init(texture: texture, color: SKColor.clear, size: CGSize(width: 15, height: 15) /*texture.size()*/)
-        
+
+        self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
         self.physicsBody?.isDynamic = true
         self.physicsBody?.categoryBitMask = PhysicsCategory.Monster
         self.physicsBody?.contactTestBitMask = PhysicsCategory.None
         self.physicsBody?.collisionBitMask = PhysicsCategory.None
+        self.physicsBody?.fieldBitMask = PhysicsCategory.Blackhole
         
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    public func destroy(pointsRewarded: Int, multiplier: Int) {
+
+    func update(_ currentTime: TimeInterval) {
+        if self.position.x < -self.size.width / 2 {
+            EnemyManager.removeEnemy(self)
+            return
+        }
+
+        if let velocity = self.physicsBody?.velocity {
+            let dx = (-150 ... 150).clamp(value: velocity.dx)
+            let dy = (-150 ... 150).clamp(value: velocity.dy)
+            self.physicsBody?.velocity = CGVector(dx: dx, dy: dy)
+        }
+    }
+
+    func destroy(pointsRewarded: Int, multiplier: Int) {
         let explosion = Explosion(multiplier: multiplier)
         explosion.position = self.position
         self.scene?.addChild(explosion)
@@ -50,6 +66,10 @@ class Enemy: SKSpriteNode {
         self.scene?.addChild(points)
         points.animate()
         
-        self.removeFromParent()
+        EnemyManager.removeEnemy(self)
+    }
+
+    func resetTrajectory() {
+        self.run(SKAction.applyForce(CGVector(dx: -5, dy: 0), duration: 5))
     }
 }

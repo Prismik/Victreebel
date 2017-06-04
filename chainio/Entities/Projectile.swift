@@ -24,14 +24,10 @@ class Projectile: SKSpriteNode {
          */
     }
 
-    public var canPropagate: Bool = true
-
-    init() {
-        let texture = SKTexture(imageNamed: "laser")
-        super.init(texture: texture, color: SKColor.clear, size: texture.size())
+    override init(texture: SKTexture?, color: SKColor, size: CGSize) {
+        super.init(texture: texture, color: color, size: size)
 
         self.name = "projectile"
-        self.setScale(0.2)
         self.zRotation = CGFloat.pi / 2
         self.isUserInteractionEnabled = true
         self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
@@ -39,6 +35,7 @@ class Projectile: SKSpriteNode {
         self.physicsBody?.categoryBitMask = PhysicsCategory.Projectile
         self.physicsBody?.contactTestBitMask = PhysicsCategory.Monster
         self.physicsBody?.collisionBitMask = PhysicsCategory.None
+        self.physicsBody?.fieldBitMask = PhysicsCategory.None
         self.physicsBody?.usesPreciseCollisionDetection = true
     }
     
@@ -46,27 +43,17 @@ class Projectile: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if self.canPropagate {
-            propagate()
+    func update(_ currentTime: TimeInterval) {
+        if let scene = self.scene {
+            let halfWidth = self.size.width / 2
+            if self.position.x < -halfWidth || self.position.x > scene.size.width + halfWidth
+                || self.position.y < -halfWidth || self.position.y > scene.size.height + halfWidth {
+                ProjectileManager.removeProjectile(self)
+            }
         }
     }
 
-    public func update(_ currentTime: TimeInterval) {
-        if let scene = self.scene, !scene.contains(self.position) {
-            self.removeFromParent()
-        }
-    }
-    
-    public func destroy() {
-        self.removeFromParent()
-    }
-
-    private func propagate() {
-        ProjectileManager.addProjectile(at: self.position, towards: CGVector(dx: 0, dy: 150))
-        ProjectileManager.addProjectile(at: self.position, towards: CGVector(dx: 0, dy: -150))
-        ProjectileManager.addProjectile(at: self.position, towards: CGVector(dx: 150, dy: 150))
-        ProjectileManager.addProjectile(at: self.position, towards: CGVector(dx: 150, dy: -150))
-        self.removeFromParent()
+    func collisionDidOccur() {
+        ProjectileManager.removeProjectile(self)
     }
 }

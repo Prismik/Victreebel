@@ -19,17 +19,21 @@ class ProjectileManager {
         }
     }
 
-    class func addProjectile(at position: CGPoint, towards direction: CGVector) {
+    class func addProjectile(ofType type: Projectile.Type, at position: CGPoint, towards direction: CGVector) {
         if let containerScene = scene {
-            let projectile = Projectile()
+            let projectile = type.init()
             projectile.position = position
             projectile.zRotation = direction.angle
             projectile.physicsBody?.velocity = direction
             containerScene.addChild(projectile)
+            ProjectileManager.projectiles.append(projectile)
         }
     }
 
-    class func removeProjectile(projectile: Projectile) {
+    class func removeProjectile(_ projectile: Projectile) {
         projectile.removeFromParent()
+        if let index = ProjectileManager.projectiles.index(of: projectile) {
+            ProjectileManager.projectiles.remove(at: index)
+        }
     }
 }

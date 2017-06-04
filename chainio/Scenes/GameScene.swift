@@ -46,7 +46,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             SKAction.sequence([
                 SKAction.run(addMonster),
                 SKAction.wait(forDuration: 0.7)
-                ])
+            ])
         ))
  
         

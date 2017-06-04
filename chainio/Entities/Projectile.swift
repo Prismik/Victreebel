@@ -53,10 +53,8 @@ class Projectile: SKSpriteNode {
     }
 
     public func update(_ currentTime: TimeInterval) {
-        if let scene = self.scene {
-            if !scene.contains(self.position) {
-                self.removeFromParent()
-            }
+        if let scene = self.scene, !scene.contains(self.position) {
+            self.removeFromParent()
         }
     }
     

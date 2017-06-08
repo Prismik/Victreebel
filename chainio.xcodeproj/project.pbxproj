@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1961E7FD1EE978A100B0E665 /* TiledArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1961E7FC1EE978A100B0E665 /* TiledArea.swift */; };
+		1961E8021EE978F500B0E665 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1961E8011EE978F500B0E665 /* Tile.swift */; };
+		1961E8041EE9793200B0E665 /* TileTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1961E8031EE9793200B0E665 /* TileTypes.swift */; };
 		196937151EDA119D0073624F /* MathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196937141EDA119D0073624F /* MathExtensions.swift */; };
 		196937181EDB07760073624F /* ProjectileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196937171EDB07760073624F /* ProjectileManager.swift */; };
 		1969371A1EDB7F820073624F /* CGVector+Overloads.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196937191EDB7F820073624F /* CGVector+Overloads.swift */; };
@@ -43,6 +46,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1961E7FC1EE978A100B0E665 /* TiledArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TiledArea.swift; path = Entities/TiledArea.swift; sourceTree = "<group>"; };
+		1961E8011EE978F500B0E665 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tile.swift; path = Entities/TiledArea/Tile.swift; sourceTree = "<group>"; };
+		1961E8031EE9793200B0E665 /* TileTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TileTypes.swift; path = Entities/TiledArea/TileTypes.swift; sourceTree = "<group>"; };
 		196937141EDA119D0073624F /* MathExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathExtensions.swift; sourceTree = "<group>"; };
 		196937171EDB07760073624F /* ProjectileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectileManager.swift; path = Entities/Projectile/ProjectileManager.swift; sourceTree = "<group>"; };
 		196937191EDB7F820073624F /* CGVector+Overloads.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGVector+Overloads.swift"; sourceTree = "<group>"; };
@@ -91,6 +97,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1961E7FE1EE978B000B0E665 /* TiledArea */ = {
+			isa = PBXGroup;
+			children = (
+				1961E7FC1EE978A100B0E665 /* TiledArea.swift */,
+				1961E8011EE978F500B0E665 /* Tile.swift */,
+				1961E8031EE9793200B0E665 /* TileTypes.swift */,
+			);
+			name = TiledArea;
+			sourceTree = "<group>";
+		};
 		196937161EDB07370073624F /* Projectile */ = {
 			isa = PBXGroup;
 			children = (
@@ -176,6 +192,7 @@
 		25CF49B51E5776BE00A121DD /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				1961E7FE1EE978B000B0E665 /* TiledArea */,
 				19D6CAF31EE44A96000338D1 /* Enemies */,
 				196937161EDB07370073624F /* Projectile */,
 				25CF49B61E5776F800A121DD /* Explosion.swift */,
@@ -273,12 +290,14 @@
 				259148C31E7653620038C49E /* SKAction+CustomActions.swift in Sources */,
 				25C058791E6E661200AD3800 /* Player.swift in Sources */,
 				25A397E41E6DC4A9001FDBEC /* MainMenuScene.swift in Sources */,
+				1961E8021EE978F500B0E665 /* Tile.swift in Sources */,
 				250737551E32BF4A0011B603 /* CGPoint+Overloads.swift in Sources */,
 				2507373E1E32BA120011B603 /* GameScene.swift in Sources */,
 				2563DA251E6BCECE008A3FBA /* Utils.swift in Sources */,
 				25DA00DB1E7476F1002321CE /* WeaponRail.swift in Sources */,
 				2592A1AC1E772C47008F7DEE /* Dashboard.swift in Sources */,
 				2511C8EC1E68DF2100992CD2 /* Points.swift in Sources */,
+				1961E7FD1EE978A100B0E665 /* TiledArea.swift in Sources */,
 				196937151EDA119D0073624F /* MathExtensions.swift in Sources */,
 				1969371A1EDB7F820073624F /* CGVector+Overloads.swift in Sources */,
 				25BB620E1E688B2000086BFB /* Enemy.swift in Sources */,
@@ -289,6 +308,7 @@
 				19D6CAF51EE44AD8000338D1 /* EnemyManager.swift in Sources */,
 				19D6CAF91EE48806000338D1 /* PropagatingProjectile.swift in Sources */,
 				19D6CAF71EE487F1000338D1 /* GravityProjectile.swift in Sources */,
+				1961E8041EE9793200B0E665 /* TileTypes.swift in Sources */,
 				196937181EDB07760073624F /* ProjectileManager.swift in Sources */,
 				250737381E32BA120011B603 /* AppDelegate.swift in Sources */,
 			);

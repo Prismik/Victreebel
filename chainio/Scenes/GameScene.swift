@@ -34,11 +34,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.weapons = WeaponRail(parent: self)
         self.addChild(weapons)
         
-        self.player = Player()
-        self.player.position = self.weapons.activeTurret!.position
-        self.player.delegate = self.weapons
-        self.addChild(player)
-        
+//        self.player = Player()
+//        self.player.position = self.weapons.activeTurret!.position
+//        self.player.delegate = self.weapons
+//        self.addChild(player)
+
         self.physicsWorld.gravity = CGVector.zero
         self.physicsWorld.contactDelegate = self
 

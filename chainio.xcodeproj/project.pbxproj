@@ -46,7 +46,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1961E7FC1EE978A100B0E665 /* TiledArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TiledArea.swift; path = Entities/TiledArea.swift; sourceTree = "<group>"; };
+		1961E7FC1EE978A100B0E665 /* TiledArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TiledArea.swift; path = Entities/TiledArea/TiledArea.swift; sourceTree = "<group>"; };
 		1961E8011EE978F500B0E665 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tile.swift; path = Entities/TiledArea/Tile.swift; sourceTree = "<group>"; };
 		1961E8031EE9793200B0E665 /* TileTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TileTypes.swift; path = Entities/TiledArea/TileTypes.swift; sourceTree = "<group>"; };
 		196937141EDA119D0073624F /* MathExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathExtensions.swift; sourceTree = "<group>"; };
@@ -152,8 +152,8 @@
 				25CF49B51E5776BE00A121DD /* Entities */,
 				25A397E21E6DC441001FDBEC /* Scenes */,
 				2507374F1E32BD110011B603 /* Sounds */,
-				250737371E32BA120011B603 /* AppDelegate.swift */,
 				2507373F1E32BA120011B603 /* GameViewController.swift */,
+				250737371E32BA120011B603 /* AppDelegate.swift */,
 				250737411E32BA120011B603 /* Main.storyboard */,
 				250737441E32BA120011B603 /* Assets.xcassets */,
 				250737461E32BA120011B603 /* LaunchScreen.storyboard */,

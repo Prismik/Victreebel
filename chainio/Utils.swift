@@ -18,3 +18,13 @@ class Utils {
         return random() * (max - min) + min
     }
 }
+
+extension SKColor {
+    convenience init(r red: Int, g green: Int, b blue: Int) {
+        self.init(r: red, g: green, b: blue, a: 1)
+    }
+
+    convenience init(r red: Int, g green: Int, b blue: Int, a alpha: CGFloat) {
+        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: alpha)
+    }
+}

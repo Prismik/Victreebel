@@ -23,17 +23,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private static let baseMultiplier: Int = 1
     
     var score: Int = 0
-    var player: Player!
-    var weapons: WeaponRail!
-    var blackhole: SKFieldNode!
 
+    var tiledArea: TiledArea!
+    var infoArea: Dashboard!
+
+    private let playAreaHeightPercentage: CGFloat = 0.8
     // SKScene function (entry point)
     override func didMove(to view: SKView) {
-        self.backgroundColor = SKColor.black
+        backgroundColor = SKColor.black
 
-        self.weapons = WeaponRail(parent: self)
-        self.addChild(weapons)
-        
+        infoArea = Dashboard(size: CGSize(width: size.width, height: size.height * (1 - playAreaHeightPercentage)))
+        infoArea.position = CGPoint(x: 0, y: 0)
+        infoArea.anchorPoint = CGPoint(x: 0, y: 0)
+        addChild(infoArea)
+
+        tiledArea = TiledArea(desiredSize: CGSize(width: size.width, height: size.height * playAreaHeightPercentage), horizontalTileCount: 16, verticalTileCount: 6)
+        tiledArea.position = CGPoint(x: 0, y: size.height * (1 - playAreaHeightPercentage))
+        tiledArea.delegate = infoArea
+        addChild(tiledArea)
+
+
 //        self.player = Player()
 //        self.player.position = self.weapons.activeTurret!.position
 //        self.player.delegate = self.weapons
@@ -45,12 +54,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ProjectileManager.scene = self
         EnemyManager.scene = self
 
-        run(SKAction.repeatForever(
-            SKAction.sequence([
-                SKAction.run(addMonster),
-                SKAction.wait(forDuration: 0.7)
-            ])
-        ))
+//        run(SKAction.repeatForever(
+//            SKAction.sequence([
+//                SKAction.run(addMonster),
+//                SKAction.wait(forDuration: 0.7)
+//            ])
+//        ))
 
         
         let backgroundMusic = SKAudioNode(fileNamed: "background-music-aac.caf")
@@ -88,14 +97,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         return firstBitMask & PhysicsCategory.Monster != 0 &&
             (secondBitMask & PhysicsCategory.Projectile != 0 || secondBitMask & PhysicsCategory.Explosion != 0)
     }
-    
-    func addMonster() {
-        let y = Utils.random(min: 0, max: 3)
-        let actualY = self.weapons.turrets[Int(y)].position.y + Utils.random(min: -1, max: 1)
-        
-        let position = CGPoint(x: size.width + 50, y: actualY)
-        EnemyManager.addEnemy(at: position, towards: CGVector(dx: -150, dy: 0))
-    }
 
     // TODO Decide if using preset explosion patterns of ennemies with clickable nodes that propagate explosion to another enemy
     //      OR
@@ -130,23 +131,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 }
 
 extension GameScene {
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else {
-            return
-        }
-
-        let finalPosition = touch.location(in: self)
-        if finalPosition != touchPosition {
-            let direction = CGVector(dx: finalPosition.x - touchPosition.x, dy: finalPosition.y - touchPosition.y).normalized()
-            ProjectileManager.addProjectile(ofType: GravityProjectile.self, at: touchPosition, towards: direction * 200)
-        }
-    }
-
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard let touch = touches.first else {
-            return
-        }
-
-        touchPosition = touch.location(in: self)
-    }
+//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        guard let touch = touches.first else {
+//            return
+//        }
+//
+//        let finalPosition = touch.location(in: self)
+//        if finalPosition != touchPosition {
+//            let direction = CGVector(dx: finalPosition.x - touchPosition.x, dy: finalPosition.y - touchPosition.y).normalized()
+//            ProjectileManager.addProjectile(ofType: GravityProjectile.self, at: touchPosition, towards: direction * 200)
+//        }
+//    }
+//
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        guard let touch = touches.first else {
+//            return
+//        }
+//
+//        touchPosition = touch.location(in: self)
+//    }
 }

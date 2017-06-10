@@ -14,16 +14,27 @@ class TiledArea: SKSpriteNode {
 
     private let horizontalTileCount: Int
     private let verticalTileCount: Int
+    private var startingPoint: CGPoint = CGPoint.zero
+    private var tileSize: CGSize = CGSize.zero
+    private var drawableFrameSize: CGSize = CGSize.zero
+
+    weak var delegate: TileSelectionDelegate?
 
     init(desiredSize: CGSize, horizontalTileCount: Int, verticalTileCount: Int) {
         self.horizontalTileCount = horizontalTileCount
         self.verticalTileCount = verticalTileCount
-        super.init(texture: nil, color: UIColor.clear, size: desiredSize)
+        super.init(texture: nil, color: SKColor.red, size: desiredSize)
 
-        let idealTileSize = self.idealTileSizeWithin(size: desiredSize)
+        computeSizesToFit()
+        physicsBody = nil
+        anchorPoint = CGPoint(x: 0, y: 0)
+        let tileSize = idealTileSize()
         let numberOfTiles = horizontalTileCount * verticalTileCount
-        for index in 0...numberOfTiles {
-            self.addTile(Tile(size: idealTileSize), at: self.positionFromIndex(index))
+        for index in 0..<numberOfTiles {
+            let tile: Tile = Tile(size: tileSize, type: TileTypes.selectable)
+            tile.color = SKColor(r: index, g: index / 2, b: 2 * index)
+            tile.delegate = self
+            self.addTile(tile, at: self.positionFromIndex(index))
         }
     }
     
@@ -41,21 +52,32 @@ class TiledArea: SKSpriteNode {
         addChild(tile)
     }
 
-    private func idealTileSizeWithin(size: CGSize) -> CGSize {
-        let width = size.width / CGFloat(self.horizontalTileCount)
-        let height = size.height / CGFloat(self.verticalTileCount)
+    // Order of computation must not change
+    private func computeSizesToFit() {
+        tileSize = idealTileSize()
+        drawableFrameSize = idealFrameSize()
+        startingPoint = idealStartingPoint()
+    }
+
+    private func idealTileSize() -> CGSize {
+        let width = size.width / CGFloat(horizontalTileCount)
+        let height = size.height / CGFloat(verticalTileCount)
         let idealUniformLength = min(width, height)
         return CGSize(width: idealUniformLength, height: idealUniformLength)
     }
 
-    private func idealFrameSizeWithin(size: CGSize) -> CGSize {
-        let idealTileSize = self.idealTileSizeWithin(size: size)
-        return CGSize(width: idealTileSize.width * CGFloat(self.horizontalTileCount),
-                      height: idealTileSize.height * CGFloat(self.verticalTileCount))
+    private func idealFrameSize() -> CGSize {
+        return CGSize(width: tileSize.width * CGFloat(horizontalTileCount),
+               height: tileSize.height * CGFloat(verticalTileCount))
+    }
+
+    private func idealStartingPoint() -> CGPoint {
+        let sizeDifference = size - drawableFrameSize
+        return CGPoint(x: sizeDifference.width / 2, y: sizeDifference.height / 2)
     }
 
     private func positionFromIndex(_ index: Int) -> CGPoint {
-        return self.gridPositionFromIndex(index) * idealTileSizeWithin(size: size).width
+        return self.gridPositionFromIndex(index) * idealTileSize().width + startingPoint + CGPoint(x: tileSize.width / 2, y: tileSize.height / 2)
     }
 
     private func gridPositionFromIndex(_ index: Int) -> CGPoint {
@@ -79,7 +101,20 @@ class TiledArea: SKSpriteNode {
 
 extension TiledArea: TileSelectionDelegate {
     func didSelect(tile: Tile) {
-        currentSelectedTile?.unselect()
-        currentSelectedTile = tile
+        if tile != currentSelectedTile {
+            currentSelectedTile?.unselect()
+            currentSelectedTile = tile
+            createSelectionIndicatorOnTile(tile)
+            delegate?.didSelect(tile: tile)
+        }
+    }
+
+    private func createSelectionIndicatorOnTile(_ tile: Tile) {
+        let selectionIndicator: SKShapeNode = SKShapeNode(rectOf: tile.size + CGSize(width: 3, height: 3))
+        selectionIndicator.strokeColor = UIColor.white
+        selectionIndicator.lineWidth = 3
+        selectionIndicator.alpha = 0
+        selectionIndicator.zPosition = 100
+        tile.selectionIndicator = selectionIndicator
     }
 }

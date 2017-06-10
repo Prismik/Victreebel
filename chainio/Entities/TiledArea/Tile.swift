@@ -15,17 +15,26 @@ protocol TileSelectionDelegate: class {
 // TODO How to have multiples tiles binded together to hold a bigger entity
 class Tile: SKSpriteNode {
     private(set) var tileDescriptorFlags: UInt32 = TileTypes.none
+    private(set) var construct: Construct?
 
     private var isTouchTarget: Bool = false
-    private let selectionIndicator: SKSpriteNode = SKSpriteNode()
 
     weak var delegate: TileSelectionDelegate?
 
-    init(size: CGSize) {
+    var selectionIndicator: SKShapeNode? {
+        didSet {
+            if let indicator = selectionIndicator {
+                addChild(indicator)
+            }
+        }
+    }
+
+    init(size: CGSize, type: UInt32) {
         super.init(texture: nil, color: SKColor.clear, size: size)
 
-        selectionIndicator.alpha = 0
-        addChild(selectionIndicator)
+        physicsBody = nil
+        isUserInteractionEnabled = true
+        tileDescriptorFlags |= type
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -33,21 +42,21 @@ class Tile: SKSpriteNode {
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.isTouchTarget = true
+        isTouchTarget = true
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if self.isTouchTarget {
-            self.handleSelection()
+        if isTouchTarget {
+            handleSelection()
         }
 
-        self.isTouchTarget = false
+        isTouchTarget = false
     }
 
     private func handleSelection() {
         if tileDescriptorFlags & TileTypes.selectable != 0 {
-            self.select()
-            if let scene = self.scene {
+            select()
+            if let scene = scene {
                 // Present modal from scene OR have a modal controller present it OR populate dashboard with info
                 // 
                 // Dashboard [ info | categories vert scroll | horiz scrollable buildItems or empty ... | actions ]
@@ -56,21 +65,23 @@ class Tile: SKSpriteNode {
     }
 
     func select() {
-        selectionIndicator.run(SKAction.fadeAlpha(to: 1, duration: 0.3))
         delegate?.didSelect(tile: self)
+        selectionIndicator?.run(SKAction.fadeAlpha(to: 1, duration: 0.3))
     }
 
     func unselect() {
-        selectionIndicator.run(SKAction.fadeAlpha(to: 0, duration: 0.3))
+        selectionIndicator?.run(SKAction.fadeAlpha(to: 0, duration: 0.3), completion: { [weak self] in
+            self?.selectionIndicator?.removeFromParent()
+        })
     }
 
-    func build(entity: SKSpriteNode.Type) {
+    func build(entity: Construct.Type) {
         // build the thing
-        self.tileDescriptorFlags &= ~TileTypes.buildable
+        tileDescriptorFlags &= ~TileTypes.buildable
     }
 
     func raze() {
         // raze the thing
-        self.tileDescriptorFlags |= TileTypes.buildable
+        tileDescriptorFlags |= TileTypes.buildable
     }
 }

@@ -1,5 +1,5 @@
 //
-//  Construct.swift
+//  ArrowTower.swift
 //  chainio
 //
 //  Created by Francis Beauchamp on 2017-06-10.
@@ -8,9 +8,8 @@
 
 import Foundation
 
-class Construct {
-    let price: Int
-    init(price: Int) {
-        self.price = price
+class ArrowTower: Construct {
+    init() {
+        super.init(price: 50)
     }
 }

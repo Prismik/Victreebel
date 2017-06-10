@@ -77,6 +77,7 @@ class Tile: SKSpriteNode {
 
     func build(entity: Construct.Type) {
         // build the thing
+        
         tileDescriptorFlags &= ~TileTypes.buildable
     }
 

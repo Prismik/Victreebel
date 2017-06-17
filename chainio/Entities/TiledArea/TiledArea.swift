@@ -33,7 +33,7 @@ class TiledArea: SKSpriteNode {
         for index in 0..<numberOfTiles {
             let tile: Tile = Tile(size: tileSize, type: TileTypes.selectable)
             tile.color = SKColor(r: index, g: index / 2, b: 2 * index)
-            tile.delegate = self
+            tile.selectionDelegate = self
             self.addTile(tile, at: self.positionFromIndex(index))
         }
     }

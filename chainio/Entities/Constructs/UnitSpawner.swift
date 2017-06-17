@@ -14,7 +14,7 @@ class UnitSpawner {
 
     private var associatedUnits: [String] = []
 
-    init(limit: Int, delay: TimeInterval) {
+    init(delay: TimeInterval, limit: Int) {
         self.unitsLimit = limit
         self.spawnDelay = delay
         SKAction.repeatForever(

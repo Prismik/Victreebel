@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class FundGenerator {
+class FundsGenerator {
     private let generationDelay: TimeInterval
     private let generatedFunds: Int
 

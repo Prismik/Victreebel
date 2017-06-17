@@ -10,6 +10,7 @@ import SpriteKit
 
 protocol CustomItemListDelegate {
     func didSelectItem(_ item: DashboardCustomItem)
+    func toucheOccured()
 }
 
 class DashboardCustomItemList: SKSpriteNode {
@@ -18,11 +19,16 @@ class DashboardCustomItemList: SKSpriteNode {
     
     init(size: CGSize) {
         super.init(texture: nil, color: SKColor.brown, size: size)
+        
+        anchorPoint = CGPoint(x: 0, y: 0)
+        isUserInteractionEnabled = true
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        delegate?.toucheOccured()
+    }
 }

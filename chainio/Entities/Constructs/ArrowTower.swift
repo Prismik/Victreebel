@@ -9,7 +9,8 @@
 import Foundation
 
 class ArrowTower: Construct {
-    init() {
-        super.init(price: 50)
+    private let shooter: ProjectileShooter = ProjectileShooter(delay: 2, range: 150)
+    required init() {
+        super.init(price: 50, name: "Arrow tower")
     }
 }

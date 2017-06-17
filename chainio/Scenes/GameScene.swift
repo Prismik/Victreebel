@@ -62,9 +62,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //        ))
 
         
-        let backgroundMusic = SKAudioNode(fileNamed: "background-music-aac.caf")
-        backgroundMusic.autoplayLooped = true
-        addChild(backgroundMusic)
+//        let backgroundMusic = SKAudioNode(fileNamed: "background-music-aac.caf")
+//        backgroundMusic.autoplayLooped = true
+//        addChild(backgroundMusic)
     }
 
     override func update(_ currentTime: TimeInterval) {

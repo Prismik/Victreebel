@@ -10,7 +10,13 @@ import Foundation
 
 class Construct {
     let price: Int
-    init(price: Int) {
+    let name: String
+    init(price: Int, name: String) {
         self.price = price
+        self.name = name
+    }
+
+    required convenience init() {
+        self.init(price: 0, name: "")
     }
 }

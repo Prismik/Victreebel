@@ -12,6 +12,11 @@ protocol TileSelectionDelegate: class {
     func didSelect(tile: Tile)
 }
 
+protocol TileActionDelegate: class {
+    func didBuildConstruct()
+    func didRazeConstruct()
+}
+
 // TODO How to have multiples tiles binded together to hold a bigger entity
 class Tile: SKSpriteNode {
     private(set) var tileDescriptorFlags: UInt32 = TileTypes.none
@@ -19,7 +24,8 @@ class Tile: SKSpriteNode {
 
     private var isTouchTarget: Bool = false
 
-    weak var delegate: TileSelectionDelegate?
+    weak var selectionDelegate: TileSelectionDelegate?
+    weak var actionDelegate: TileActionDelegate?
 
     var selectionIndicator: SKShapeNode? {
         didSet {
@@ -65,7 +71,7 @@ class Tile: SKSpriteNode {
     }
 
     func select() {
-        delegate?.didSelect(tile: self)
+        selectionDelegate?.didSelect(tile: self)
         selectionIndicator?.run(SKAction.fadeAlpha(to: 1, duration: 0.3))
     }
 
@@ -76,13 +82,14 @@ class Tile: SKSpriteNode {
     }
 
     func build(entity: Construct.Type) {
-        // build the thing
-        
+        construct = entity.init()
+        actionDelegate?.didBuildConstruct()
         tileDescriptorFlags &= ~TileTypes.buildable
     }
 
     func raze() {
         // raze the thing
+        actionDelegate?.didRazeConstruct()
         tileDescriptorFlags |= TileTypes.buildable
     }
 }

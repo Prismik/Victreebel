@@ -49,6 +49,8 @@ class Tile: SKSpriteNode {
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         isTouchTarget = true
+
+        super.touchesBegan(touches, with: event)
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -57,6 +59,8 @@ class Tile: SKSpriteNode {
         }
 
         isTouchTarget = false
+
+        super.touchesEnded(touches, with: event)
     }
 
     private func handleSelection() {
@@ -83,6 +87,8 @@ class Tile: SKSpriteNode {
 
     func build(entity: Construct.Type) {
         construct = entity.init()
+        construct?.zPosition = zPosition + 0.02
+        construct?.position = CGPoint(x: 0, y: -size.height / 2)
         addChild(construct!)
         actionDelegate?.didBuildConstruct()
         tileDescriptorFlags &= ~TileTypes.buildable

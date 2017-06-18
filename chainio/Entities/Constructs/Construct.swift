@@ -15,7 +15,6 @@ class Construct: SKSpriteNode {
         self.price = price
         super.init(texture: texture, color: UIColor.clear, size: texture?.size() ?? CGSize.zero)
         self.name = name
-        zPosition = 101
         anchorPoint = CGPoint(x: 0.5, y: 0)
     }
 

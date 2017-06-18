@@ -29,11 +29,13 @@ class TiledArea: SKSpriteNode {
         physicsBody = nil
         anchorPoint = CGPoint(x: 0, y: 0)
         let numberOfTiles = horizontalTileCount * verticalTileCount
+        let startingZIndex: CGFloat = 100
         for index in 0..<numberOfTiles {
             let tile: Tile = Tile(size: tileSize, type: TileTypes.selectable)
+            tile.zPosition = CGFloat(numberOfTiles / 10) + startingZIndex - CGFloat(index / 10)
             tile.color = SKColor(r: index, g: index / 2, b: 2 * index)
             tile.selectionDelegate = self
-            self.addTile(tile, at: self.positionFromIndex(index))
+            addTile(tile, at: positionFromIndex(index))
         }
     }
     
@@ -76,7 +78,7 @@ class TiledArea: SKSpriteNode {
     }
 
     private func positionFromIndex(_ index: Int) -> CGPoint {
-        return self.gridPositionFromIndex(index) * idealTileSize().width + startingPoint + CGPoint(x: tileSize.width / 2, y: tileSize.height / 2)
+        return gridPositionFromIndex(index) * idealTileSize().width + startingPoint + CGPoint(x: tileSize.width / 2, y: tileSize.height / 2)
     }
 
     private func gridPositionFromIndex(_ index: Int) -> CGPoint {
@@ -86,11 +88,11 @@ class TiledArea: SKSpriteNode {
     }
 
     private func tileExistsAt(x: Int, y: Int) -> Bool {
-        return x >= 0 && x < self.horizontalTileCount && y >= 0 && y < self.verticalTileCount
+        return x >= 0 && x < horizontalTileCount && y >= 0 && y < verticalTileCount
     }
 
     private func tileAt(x: Int, y: Int) -> Tile? {
-        if !self.tileExistsAt(x: x, y: y) {
+        if !tileExistsAt(x: x, y: y) {
             return nil
         }
 
@@ -109,6 +111,6 @@ extension TiledArea: TileSelectionDelegate {
     }
 
     private func createSelectionIndicatorOnTile(_ tile: Tile) {
-        tile.selectionIndicator = TileSelectionIndicator(size: tileSize)
+        tile.selectionIndicator = TileSelectionIndicator(size: tileSize, tileZPosition: tile.zPosition)
     }
 }

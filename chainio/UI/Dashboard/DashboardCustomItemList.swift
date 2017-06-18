@@ -32,3 +32,9 @@ class DashboardCustomItemList: SKSpriteNode {
         delegate?.toucheOccured()
     }
 }
+
+extension DashboardCustomItemList: CustomItemDelegate {
+    func didSelectItem(_ item: DashboardCustomItem) {
+        delegate?.didSelectItem(item)
+    }
+}

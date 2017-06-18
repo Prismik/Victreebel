@@ -14,16 +14,16 @@ class TileSelectionIndicator: SKSpriteNode {
 
     private let animationDuration: TimeInterval = 0.3
 
-    init(size: CGSize) {
+    init(size: CGSize, tileZPosition: CGFloat) {
         suroundingIndicator = SKShapeNode(rectOf: size + CGSize(width: 3, height: 3))
         suroundingIndicator.strokeColor = UIColor.white
         suroundingIndicator.lineWidth = 3
-        suroundingIndicator.zPosition = 100
+        suroundingIndicator.zPosition = tileZPosition + 0.01
 
         let arrowTexture = SKTexture(imageNamed: "arrow")
         arrowIndicator = SKSpriteNode(texture: arrowTexture, color: SKColor.clear, size: arrowTexture.size())
         arrowIndicator.anchorPoint = CGPoint(x: 0.5, y: 0)
-        arrowIndicator.zPosition = 102
+        arrowIndicator.zPosition = tileZPosition + 0.03
         super.init(texture: nil, color: SKColor.clear, size: size)
         self.alpha = 0
 

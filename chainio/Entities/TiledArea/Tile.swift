@@ -27,7 +27,7 @@ class Tile: SKSpriteNode {
     weak var selectionDelegate: TileSelectionDelegate?
     weak var actionDelegate: TileActionDelegate?
 
-    var selectionIndicator: SKShapeNode? {
+    var selectionIndicator: TileSelectionIndicator? {
         didSet {
             if let indicator = selectionIndicator {
                 addChild(indicator)
@@ -72,12 +72,12 @@ class Tile: SKSpriteNode {
 
     func select() {
         selectionDelegate?.didSelect(tile: self)
-        selectionIndicator?.run(SKAction.fadeAlpha(to: 1, duration: 0.3))
+        selectionIndicator?.show()
     }
 
     func unselect() {
-        selectionIndicator?.run(SKAction.fadeAlpha(to: 0, duration: 0.3), completion: { [weak self] in
-            self?.selectionIndicator?.removeFromParent()
+        selectionIndicator?.hide(completion: { [weak self] in
+            self?.selectionIndicator = nil
         })
     }
 

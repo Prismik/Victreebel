@@ -15,7 +15,7 @@ class TiledArea: SKSpriteNode {
     private let horizontalTileCount: Int
     private let verticalTileCount: Int
     private var startingPoint: CGPoint = CGPoint.zero
-    private var tileSize: CGSize = CGSize.zero
+    fileprivate var tileSize: CGSize = CGSize.zero
     private var drawableFrameSize: CGSize = CGSize.zero
 
     weak var delegate: TileSelectionDelegate?
@@ -28,7 +28,6 @@ class TiledArea: SKSpriteNode {
         computeSizesToFit()
         physicsBody = nil
         anchorPoint = CGPoint(x: 0, y: 0)
-        let tileSize = idealTileSize()
         let numberOfTiles = horizontalTileCount * verticalTileCount
         for index in 0..<numberOfTiles {
             let tile: Tile = Tile(size: tileSize, type: TileTypes.selectable)
@@ -110,11 +109,6 @@ extension TiledArea: TileSelectionDelegate {
     }
 
     private func createSelectionIndicatorOnTile(_ tile: Tile) {
-        let selectionIndicator: SKShapeNode = SKShapeNode(rectOf: tile.size + CGSize(width: 3, height: 3))
-        selectionIndicator.strokeColor = UIColor.white
-        selectionIndicator.lineWidth = 3
-        selectionIndicator.alpha = 0
-        selectionIndicator.zPosition = 100
-        tile.selectionIndicator = selectionIndicator
+        tile.selectionIndicator = TileSelectionIndicator(size: tileSize)
     }
 }

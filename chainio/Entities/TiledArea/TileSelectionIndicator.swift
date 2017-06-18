@@ -22,7 +22,8 @@ class TileSelectionIndicator: SKSpriteNode {
 
         let arrowTexture = SKTexture(imageNamed: "arrow")
         arrowIndicator = SKSpriteNode(texture: arrowTexture, color: SKColor.clear, size: arrowTexture.size())
-        arrowIndicator.zPosition = 101
+        arrowIndicator.anchorPoint = CGPoint(x: 0.5, y: 0)
+        arrowIndicator.zPosition = 102
         super.init(texture: nil, color: SKColor.clear, size: size)
         self.alpha = 0
 

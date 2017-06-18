@@ -83,12 +83,14 @@ class Tile: SKSpriteNode {
 
     func build(entity: Construct.Type) {
         construct = entity.init()
+        addChild(construct!)
         actionDelegate?.didBuildConstruct()
         tileDescriptorFlags &= ~TileTypes.buildable
     }
 
     func raze() {
-        // raze the thing
+        construct?.removeFromParent()
+        construct = nil
         actionDelegate?.didRazeConstruct()
         tileDescriptorFlags |= TileTypes.buildable
     }

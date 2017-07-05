@@ -90,6 +90,7 @@ class Tile: SKSpriteNode {
         construct?.zPosition = zPosition + 0.02
         construct?.position = CGPoint(x: 0, y: -size.height / 2)
         addChild(construct!)
+        construct?.enableAugment()
         actionDelegate?.didBuildConstruct()
         tileDescriptorFlags &= ~TileTypes.buildable
     }

@@ -25,4 +25,18 @@ class Construct: SKSpriteNode {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    func enableAugment() {
+        
+    }
+}
+
+extension Construct: AugmentDelegate {
+    func getPosition() -> CGPoint {
+        if let scene = scene {
+            return scene.convert(position, from: self)
+        }
+
+        return position
+    }
 }

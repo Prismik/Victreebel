@@ -26,6 +26,7 @@ class TileDescriptor: SKSpriteNode {
 
         anchorPoint = CGPoint(x: 0, y: 0)
 
+        isUserInteractionEnabled = true
         textLabel.position = CGPoint(x: margin, y: margin)
         textLabel.color = UIColor.red
         textLabel.horizontalAlignmentMode = .left
@@ -35,6 +36,12 @@ class TileDescriptor: SKSpriteNode {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        EnemyManager.addEnemy(at: CGPoint(x: 50, y: 125), towards: CGVector(dx: Utils.random(min: 50, max: 200), dy: Utils.random(min: -125, max: 125)))
+
+        super.touchesEnded(touches, with: event)
     }
 }
 

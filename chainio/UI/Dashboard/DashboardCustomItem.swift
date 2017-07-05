@@ -17,25 +17,27 @@ class DashboardCustomItem: SKSpriteNode {
     let price: Int
 
     weak var delegate: CustomItemDelegate?
-    
-    private let nameLabel: SKLabelNode = SKLabelNode()
+
     private let priceLabel: SKLabelNode = SKLabelNode()
     private let structureIcon: SKSpriteNode
 
-    init(structure: Construct.Type) {
+    init(structure: Construct.Type, size: CGSize) {
         associatedStructure = structure
         let structureInstance = associatedStructure.init()
         price = structureInstance.price
 
-        let iconSize: CGSize = structureInstance.texture?.size() ?? CGSize.zero
-        structureIcon = SKSpriteNode(texture: structureInstance.texture, color: UIColor.clear, size: iconSize)
-
+        structureIcon = SKSpriteNode(texture: structureInstance.texture, color: UIColor.red, size: size - CGSize(width: 30, height: 10))
+        structureIcon.position = CGPoint(x: 0, y: 30)
         super.init(texture: nil, color: SKColor.clear, size: CGSize.zero)
-        nameLabel.text = structureInstance.name
-        priceLabel.text = "\(structureInstance.price)"
+        isUserInteractionEnabled = true
 
+        priceLabel.text = "\(structureInstance.price)"
+        priceLabel.color = SKColor.black
+        priceLabel.position = CGPoint(x: 0, y: 0)
+        priceLabel.fontSize = 12
+        priceLabel.verticalAlignmentMode = .bottom
+        priceLabel.horizontalAlignmentMode = .center
         addChild(priceLabel)
-        addChild(nameLabel)
         addChild(structureIcon)
     }
     

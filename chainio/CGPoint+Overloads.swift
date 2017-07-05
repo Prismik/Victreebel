@@ -39,4 +39,8 @@ extension CGPoint {
     func normalized() -> CGPoint {
         return self / length()
     }
+
+    func asVector() -> CGVector {
+        return CGVector(dx: self.x, dy: self.y)
+    }
 }

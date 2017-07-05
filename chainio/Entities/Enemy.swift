@@ -44,7 +44,7 @@ class Enemy: SKSpriteNode {
     }
 
     func update(_ currentTime: TimeInterval) {
-        if self.position.x < -self.size.width / 2 {
+        if position.x < -size.width / 2 || position.y < -size.height / 2 || position.x > 1025 || position.y > 1025 { // TODO Better checks
             EnemyManager.removeEnemy(self)
             return
         }

@@ -24,6 +24,7 @@ class EnemyManager {
         if let containerScene = scene {
             let enemy = Enemy()
             enemy.position = position
+            enemy.zPosition = 999
             enemy.zRotation = direction.angle
             enemy.physicsBody?.velocity = direction
             containerScene.addChild(enemy)
@@ -42,5 +43,10 @@ class EnemyManager {
         for enemy in EnemyManager.enemies {
             enemy.resetTrajectory()
         }
+    }
+
+    // TODO Get closest from point
+    class func getClosestEnemy(from point: CGPoint) -> Enemy? {
+        return enemies.first
     }
 }

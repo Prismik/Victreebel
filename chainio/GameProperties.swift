@@ -9,7 +9,7 @@
 import Foundation
 
 class GameProperties {
-    static var funds: Int = 0
+    static var funds: Int = 250
 
     class func availableConstructs() -> [Construct.Type] {
         return []

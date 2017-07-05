@@ -14,7 +14,8 @@ class PropagatingProjectile: Projectile {
         let texture = SKTexture(imageNamed: "laser")
         super.init(texture: texture, color: SKColor.clear, size: texture.size())
 
-        self.setScale(0.2)
+        zPosition = 998
+        setScale(0.2)
     }
 
     required init?(coder aDecoder: NSCoder) {

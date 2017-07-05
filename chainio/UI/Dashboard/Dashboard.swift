@@ -55,10 +55,5 @@ extension Dashboard: CustomItemListDelegate {
         if GameProperties.funds >= item.price {
             selectedTile?.build(entity: item.associatedStructure)
         }
-
-    }
-
-    func toucheOccured() {
-        selectedTile?.build(entity: ArrowTower.self)
     }
 }

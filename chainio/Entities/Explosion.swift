@@ -27,7 +27,8 @@ class Explosion: SKSpriteNode {
         let texture = Explosion.textures[0]
         self.multiplier = multiplier
         super.init(texture: texture, color: SKColor.clear, size: texture.size())
-        
+
+        zPosition = 500
         self.physicsBody = SKPhysicsBody(circleOfRadius: self.size.width/2)
         self.physicsBody?.isDynamic = true
         self.physicsBody?.categoryBitMask = PhysicsCategory.Explosion

@@ -88,8 +88,8 @@ class Tile: SKSpriteNode {
     func build(entity: Construct.Type) {
         construct = entity.init()
         construct?.zPosition = zPosition + 0.02
-        construct?.position = CGPoint(x: 0, y: -size.height / 2)
         addChild(construct!)
+        construct?.position = CGPoint(x: 0, y: -size.height / 2)
         construct?.enableAugment()
         actionDelegate?.didBuildConstruct()
         tileDescriptorFlags &= ~TileTypes.buildable

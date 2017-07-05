@@ -11,6 +11,15 @@ import SpriteKit
 class Construct: SKSpriteNode {
     let price: Int
 
+    override var position: CGPoint {
+        didSet {
+            if let scene = scene {
+                absolutePosition = scene.convert(position, from: self)
+            }
+        }
+    }
+
+    fileprivate var absolutePosition: CGPoint = CGPoint.zero
     init(texture: SKTexture?, price: Int, name: String) {
         self.price = price
         super.init(texture: texture, color: UIColor.clear, size: texture?.size() ?? CGSize.zero)
@@ -33,10 +42,10 @@ class Construct: SKSpriteNode {
 
 extension Construct: AugmentDelegate {
     func getPosition() -> CGPoint {
-        if let scene = scene {
-            return scene.convert(position, from: self)
-        }
+        return absolutePosition
+    }
 
-        return position
+    func play(sound named: String) {
+        run(SKAction.playSoundFileNamed(named, waitForCompletion: false))
     }
 }

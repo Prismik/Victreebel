@@ -15,7 +15,6 @@ class ProjectileShooter {
     weak var delegate: AugmentDelegate?
 
     private var timer: Timer = Timer()
-    private let position: CGPoint = CGPoint.zero
 
     init(delay: TimeInterval, range: CGFloat) {
         self.shootDelay = delay
@@ -32,7 +31,7 @@ class ProjectileShooter {
 
     @objc
     private func prepareToShoot() {
-        if let enemy = EnemyManager.getClosestEnemy(from: position) {
+        if let position = delegate?.getPosition(), let enemy = EnemyManager.getClosestEnemy(from: position) {
             shoot(at: enemy)
         }
     }
@@ -41,6 +40,7 @@ class ProjectileShooter {
         if let position = delegate?.getPosition() {
             let direction: CGVector = (enemy.position - position).asVector().normalized()
             ProjectileManager.addProjectile(ofType: PropagatingProjectile.self, at: position, towards: direction * 500)
+            delegate?.play(sound: "laser.wav")
         }
     }
 }

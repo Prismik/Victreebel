@@ -260,8 +260,8 @@
 		25CF49B51E5776BE00A121DD /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				199712AD1EEC4DAA00940A60 /* Constructs */,
 				1961E7FE1EE978B000B0E665 /* TiledArea */,
+				199712AD1EEC4DAA00940A60 /* Constructs */,
 				19D6CAF31EE44A96000338D1 /* Enemies */,
 				196937161EDB07370073624F /* Projectile */,
 				25CF49B61E5776F800A121DD /* Explosion.swift */,

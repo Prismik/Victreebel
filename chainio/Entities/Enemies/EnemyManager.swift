@@ -45,7 +45,6 @@ class EnemyManager {
         }
     }
 
-    // TODO Get closest from point
     class func getClosestEnemy(from point: CGPoint) -> Enemy? {
         var closestEnemy: Enemy? = nil
         var comparedLength: CGFloat = .greatestFiniteMagnitude

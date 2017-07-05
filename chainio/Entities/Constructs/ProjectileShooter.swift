@@ -32,15 +32,15 @@ class ProjectileShooter {
     @objc
     private func prepareToShoot() {
         if let position = delegate?.getPosition(), let enemy = EnemyManager.getClosestEnemy(from: position) {
-            shoot(at: enemy)
+            let deltaPosition: CGVector = (enemy.position - position).asVector()
+            if deltaPosition.length() <= maximumRange {
+                shoot(from: position, towards: deltaPosition)
+            }
         }
     }
 
-    private func shoot(at enemy: SKSpriteNode) {
-        if let position = delegate?.getPosition() {
-            let direction: CGVector = (enemy.position - position).asVector().normalized()
-            ProjectileManager.addProjectile(ofType: PropagatingProjectile.self, at: position, towards: direction * 500)
-            delegate?.play(sound: "laser.wav")
-        }
+    private func shoot(from position: CGPoint, towards direction: CGVector) {
+        ProjectileManager.addProjectile(ofType: PropagatingProjectile.self, at: position, towards: direction * 500)
+        delegate?.play(sound: "laser.wav")
     }
 }

@@ -10,7 +10,7 @@ import SpriteKit
 
 class ArrowTower: Construct {
     static let texture: SKTexture = SKTexture(imageNamed: "roundTower")
-    private let shooter: ProjectileShooter = ProjectileShooter(delay: 1.25, range: 150)
+    private let shooter: ProjectileShooter = ProjectileShooter(delay: 1.25, range: 250)
     required init() {
         super.init(texture: ArrowTower.texture, price: 50, name: "Arrow tower")
         shooter.delegate = self

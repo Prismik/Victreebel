@@ -26,7 +26,7 @@ class ProjectileShooter {
     }
 
     func enable() {
-        self.timer = Timer.scheduledTimer(timeInterval: shootDelay, target: self, selector: #selector(ProjectileShooter.prepareToShoot), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: shootDelay, target: self, selector: #selector(ProjectileShooter.prepareToShoot), userInfo: nil, repeats: true)
     }
 
     @objc
@@ -34,7 +34,7 @@ class ProjectileShooter {
         if let position = delegate?.getPosition(), let enemy = EnemyManager.getClosestEnemy(from: position) {
             let deltaPosition: CGVector = (enemy.position - position).asVector()
             if deltaPosition.length() <= maximumRange {
-                shoot(from: position, towards: deltaPosition)
+                shoot(from: position, towards: deltaPosition.normalized())
             }
         }
     }

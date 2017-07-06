@@ -32,6 +32,17 @@ class EnemyManager {
         }
     }
 
+    class func addEnemy(at position: CGPoint, following path: [CGPoint], during interval: TimeInterval) {
+        if let containerScene = scene {
+            let enemy = Enemy()
+            enemy.position = position
+            enemy.zPosition = 999
+            containerScene.addChild(enemy)
+            EnemyManager.enemies.append(enemy)
+            enemy.run(PathManager.createPath(using: path, with: interval))
+        }
+    }
+
     class func removeEnemy(_ enemy: Enemy) {
         enemy.removeFromParent()
         if let index = EnemyManager.enemies.index(of: enemy) {

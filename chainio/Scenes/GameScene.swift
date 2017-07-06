@@ -28,7 +28,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var infoArea: Dashboard!
 
     private let playAreaHeightPercentage: CGFloat = 0.8
-    // SKScene function (entry point)
+
     override func didMove(to view: SKView) {
         backgroundColor = SKColor.black
 
@@ -41,12 +41,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         tiledArea.position = CGPoint(x: 0, y: size.height * (1 - playAreaHeightPercentage))
         tiledArea.delegate = infoArea
         addChild(tiledArea)
-
-
-//        self.player = Player()
-//        self.player.position = self.weapons.activeTurret!.position
-//        self.player.delegate = self.weapons
-//        self.addChild(player)
+        tiledArea.configureSpawner()
 
         self.physicsWorld.gravity = CGVector.zero
         self.physicsWorld.contactDelegate = self

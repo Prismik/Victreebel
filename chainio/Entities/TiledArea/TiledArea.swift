@@ -20,6 +20,7 @@ class TiledArea: SKSpriteNode {
 
     weak var delegate: TileSelectionDelegate?
 
+    private let spawner: EnemySpawner = EnemySpawner()
     init(desiredSize: CGSize, horizontalTileCount: Int, verticalTileCount: Int) {
         self.horizontalTileCount = horizontalTileCount
         self.verticalTileCount = verticalTileCount
@@ -43,8 +44,26 @@ class TiledArea: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setPassablePath(tilesLocation: [CGPoint]) {
+    func configureSpawner() {
+        let pathTiles: [Tile] = [
+            tileAt(x: horizontalTileCount - 1, y: verticalTileCount - 1)!,
+            tileAt(x: horizontalTileCount - 2, y: verticalTileCount - 1)!,
+            tileAt(x: horizontalTileCount - 3, y: verticalTileCount - 1)!,
+            tileAt(x: horizontalTileCount - 4, y: verticalTileCount - 1)!,
+            tileAt(x: horizontalTileCount - 4, y: verticalTileCount - 2)!,
+            tileAt(x: horizontalTileCount - 4, y: verticalTileCount - 3)!,
+            tileAt(x: horizontalTileCount - 5, y: verticalTileCount - 3)!,
+        ]
 
+        if let scene = scene {
+            let firstTile: Tile = pathTiles.first!
+            // TODO Position not working because of anchor point
+            spawner.position = firstTile.position //scene.convert(firstTile.position, from: firstTile)
+//            spawner.path = pathTiles.map({ tile in scene.convert(tile.position, from: tile) })
+            spawner.path = pathTiles.map({ tile in tile.position })
+        }
+
+        spawner.activate()
     }
 
     private func addTile(_ tile: Tile, at position: CGPoint) {

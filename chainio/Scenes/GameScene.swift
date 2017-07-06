@@ -81,7 +81,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if shouldHandleCollision(firstBitMask: firstBody.categoryBitMask, secondBitMask: secondBody.categoryBitMask) {
             if let monster = firstBody.node as? Enemy, let
-                entity = secondBody.node as? SKSpriteNode {
+                entity = secondBody.node as? SKSpriteNode, entity.parent != nil {
                 entityDidCollideWithMonster(entity: entity, monster: monster)
             }
         }
@@ -109,17 +109,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
      */
     func entityDidCollideWithMonster(entity: SKSpriteNode, monster: Enemy) {
         var multiplier: Int = GameScene.baseMultiplier
-        if let projectile = entity as? Projectile {
+        if let projectile: Projectile = entity as? Projectile {
+            projectile.physicsBody?.categoryBitMask = PhysicsCategory.None
+            monster.hurt(damage: projectile.damage, type: 1)
             projectile.collisionDidOccur()
+
         }
         else if let explosion = entity as? Explosion {
             multiplier = explosion.multiplier + 1
+            monster.hurt(damage: 75, type: 2)
         }
-        
-        let additionalScore: Int = monster.score * multiplier
-        self.score += additionalScore
-        
-        monster.destroy(pointsRewarded: additionalScore, multiplier: multiplier)
+
+        if monster.isDead {
+            let additionalScore: Int = monster.score * multiplier
+            score += additionalScore
+            monster.destroy(pointsRewarded: additionalScore, multiplier: multiplier)
+        }
     }
 
     var touchPosition: CGPoint = CGPoint.zero

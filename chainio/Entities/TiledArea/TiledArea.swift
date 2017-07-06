@@ -55,7 +55,7 @@ class TiledArea: SKSpriteNode {
             tileAt(x: horizontalTileCount - 5, y: verticalTileCount - 3)!,
         ]
 
-        if let scene = scene {
+        if scene != nil {
             let firstTile: Tile = pathTiles.first!
             // TODO Position not working because of anchor point
             spawner.position = firstTile.position //scene.convert(firstTile.position, from: firstTile)

@@ -33,9 +33,9 @@ class PropagatingProjectile: Projectile {
     }
 
     private func propagate() {
-        ProjectileManager.addProjectile(ofType: PropagatingProjectile.self, at: self.position, towards: CGVector(dx: 0, dy: 150))
-        ProjectileManager.addProjectile(ofType: PropagatingProjectile.self, at: self.position, towards: CGVector(dx: 0, dy: -150))
-        ProjectileManager.addProjectile(ofType: PropagatingProjectile.self, at: self.position, towards: CGVector(dx: 150, dy: 150))
-        ProjectileManager.addProjectile(ofType: PropagatingProjectile.self, at: self.position, towards: CGVector(dx: 150, dy: -150))
+//        ProjectileManager.addProjectile(ofType: PropagatingProjectile.self, at: self.position, towards: CGVector(dx: 0, dy: 150))
+//        ProjectileManager.addProjectile(ofType: PropagatingProjectile.self, at: self.position, towards: CGVector(dx: 0, dy: -150))
+//        ProjectileManager.addProjectile(ofType: PropagatingProjectile.self, at: self.position, towards: CGVector(dx: 150, dy: 150))
+//        ProjectileManager.addProjectile(ofType: PropagatingProjectile.self, at: self.position, towards: CGVector(dx: 150, dy: -150))
     }
 }

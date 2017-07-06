@@ -13,7 +13,9 @@ class Projectile: SKSpriteNode {
     private static var atlas: SKTextureAtlas? = nil
     private static var textures: [SKTexture] = []
     private static var count: Int = 0
-    
+
+    let damage: Int = 50
+
     public class func loadTextures() {
         /*
          Enemy.atlas = SKTextureAtlas(named: "explosion.atlas")
@@ -27,16 +29,16 @@ class Projectile: SKSpriteNode {
     override init(texture: SKTexture?, color: SKColor, size: CGSize) {
         super.init(texture: texture, color: color, size: size)
 
-        self.name = "projectile"
-        self.zRotation = CGFloat.pi / 2
-        self.isUserInteractionEnabled = true
-        self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
-        self.physicsBody?.isDynamic = true
-        self.physicsBody?.categoryBitMask = PhysicsCategory.Projectile
-        self.physicsBody?.contactTestBitMask = PhysicsCategory.Monster
-        self.physicsBody?.collisionBitMask = PhysicsCategory.None
-        self.physicsBody?.fieldBitMask = PhysicsCategory.None
-        self.physicsBody?.usesPreciseCollisionDetection = true
+        name = "projectile"
+        zRotation = CGFloat.pi / 2
+        isUserInteractionEnabled = true
+        physicsBody = SKPhysicsBody(rectangleOf: size)
+        physicsBody?.isDynamic = true
+        physicsBody?.categoryBitMask = PhysicsCategory.Projectile
+        physicsBody?.contactTestBitMask = PhysicsCategory.Monster
+        physicsBody?.collisionBitMask = PhysicsCategory.None
+        physicsBody?.fieldBitMask = PhysicsCategory.None
+        physicsBody?.usesPreciseCollisionDetection = true
     }
     
     required init?(coder aDecoder: NSCoder) {

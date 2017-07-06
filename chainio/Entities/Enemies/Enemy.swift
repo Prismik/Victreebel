@@ -10,11 +10,19 @@ import Foundation
 import SpriteKit
 
 class Enemy: SKSpriteNode {
+    private(set) var health: Int = 100
+
     private static var atlas: SKTextureAtlas? = nil
     private static var textures: [SKTexture] = []
     private static var count: Int = 0
 
     private(set) var score: Int = 100
+
+    var isDead: Bool {
+        get {
+            return health <= 0
+        }
+    }
     
     public class func loadTextures() {
         Enemy.atlas = SKTextureAtlas(named: "enemies.atlas")
@@ -29,13 +37,13 @@ class Enemy: SKSpriteNode {
         let texture = Enemy.atlas!.textureNamed("enemy_\(index).png")
         super.init(texture: texture, color: SKColor.clear, size: CGSize(width: 15, height: 15) /*texture.size()*/)
 
-        self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
-        self.physicsBody?.isDynamic = true
-        self.physicsBody?.categoryBitMask = PhysicsCategory.Monster
-        self.physicsBody?.contactTestBitMask = PhysicsCategory.None
-        self.physicsBody?.collisionBitMask = PhysicsCategory.None
-        self.physicsBody?.fieldBitMask = PhysicsCategory.Blackhole
+        anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        physicsBody = SKPhysicsBody(rectangleOf: size)
+        physicsBody?.isDynamic = true
+        physicsBody?.categoryBitMask = PhysicsCategory.Monster
+        physicsBody?.contactTestBitMask = PhysicsCategory.None
+        physicsBody?.collisionBitMask = PhysicsCategory.None
+        physicsBody?.fieldBitMask = PhysicsCategory.Blackhole
         
     }
     
@@ -49,21 +57,34 @@ class Enemy: SKSpriteNode {
             return
         }
 
-        if let velocity = self.physicsBody?.velocity {
+        if let velocity = physicsBody?.velocity {
             let dx = (-150 ... 150).clamp(value: velocity.dx)
             let dy = (-150 ... 150).clamp(value: velocity.dy)
-            self.physicsBody?.velocity = CGVector(dx: dx, dy: dy)
+            physicsBody?.velocity = CGVector(dx: dx, dy: dy)
         }
+    }
+
+    // TODO Damage type system + resistances
+    func hurt(damage: Int, type: Int) {
+        health -= damage
+        let colorFlash: SKAction = SKAction.sequence([
+            SKAction.colorize(with: .red, colorBlendFactor: 1.0, duration: 0.15),
+            SKAction.colorize(with: .white, colorBlendFactor: 1.0, duration: 0.15)
+        ])
+        run(SKAction.group([
+            colorFlash,
+            SKAction.playSoundFileNamed("explosion_2.wav", waitForCompletion: false)
+        ]))
     }
 
     func destroy(pointsRewarded: Int, multiplier: Int) {
         let explosion = Explosion(multiplier: multiplier)
-        explosion.position = self.position
+        explosion.position = position
         self.scene?.addChild(explosion)
         
         let points = Points(score: pointsRewarded)
-        points.position = self.position
-        self.scene?.addChild(points)
+        points.position = position
+        scene?.addChild(points)
         points.animate()
         
         EnemyManager.removeEnemy(self)

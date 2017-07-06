@@ -66,7 +66,7 @@ class Tile: SKSpriteNode {
     private func handleSelection() {
         if tileDescriptorFlags & TileTypes.selectable != 0 {
             select()
-            if let scene = scene {
+            if scene != nil {
                 // Present modal from scene OR have a modal controller present it OR populate dashboard with info
                 // 
                 // Dashboard [ info | categories vert scroll | horiz scrollable buildItems or empty ... | actions ]

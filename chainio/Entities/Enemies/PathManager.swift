@@ -14,4 +14,13 @@ class PathManager {
         let moveActions: [SKAction] = points.map({ point in SKAction.move(to: point, duration: timeBetweenPoint) })
         return SKAction.sequence(moveActions)
     }
+
+    class func createBezierPath(using points: [CGPoint], with interval: TimeInterval) -> SKAction {
+        var copy: [CGPoint] = points
+        let cgPath: CGMutablePath = CGMutablePath()
+        cgPath.move(to: copy.removeFirst())
+        cgPath.addLines(between: copy)
+
+        return SKAction.follow(cgPath, asOffset: false, orientToPath: false, duration: interval)
+    }
 }

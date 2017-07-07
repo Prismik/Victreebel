@@ -11,19 +11,16 @@ import SpriteKit
 
 class Enemy: SKSpriteNode {
     private(set) var health: Int = 100
+    private(set) var score: Int = 100
 
     private static var atlas: SKTextureAtlas? = nil
     private static var textures: [SKTexture] = []
     private static var count: Int = 0
 
-    private(set) var score: Int = 100
-
     public let elements: [Element.Type] = [Fire.self]
     
     var isDead: Bool {
-        get {
-            return health <= 0
-        }
+        get { return health <= 0 }
     }
     
     public class func loadTextures() {

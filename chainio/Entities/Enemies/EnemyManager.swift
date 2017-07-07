@@ -32,14 +32,14 @@ class EnemyManager {
         }
     }
 
-    class func addEnemy(at position: CGPoint, following path: [CGPoint], during interval: TimeInterval) {
+    class func addEnemy(at position: CGPoint, following points: [CGPoint], during interval: TimeInterval) {
         if let containerScene = scene {
             let enemy = Enemy()
             enemy.position = position
             enemy.zPosition = 999
             containerScene.addChild(enemy)
             EnemyManager.enemies.append(enemy)
-            enemy.run(PathManager.createPath(using: path, with: interval))
+            enemy.run(PathManager.createBezierPath(using: points, with: interval))
         }
     }
 

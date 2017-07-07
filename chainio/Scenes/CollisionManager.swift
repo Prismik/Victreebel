@@ -50,7 +50,6 @@ extension CollisionManager: SKPhysicsContactDelegate {
     }
 
     func entityDidCollideWithMonster(entity: SKSpriteNode, monster: Enemy) {
-        var multiplier: Int = GameProperties.baseMultiplier
         if let projectile: Projectile = entity as? Projectile {
             projectile.physicsBody?.categoryBitMask = PhysicsCategory.None
             monster.hurt(damage: projectile.damage, type: 1)
@@ -58,13 +57,8 @@ extension CollisionManager: SKPhysicsContactDelegate {
 
         }
         else if let explosion = entity as? Explosion {
-            multiplier = explosion.multiplier + 1
+//            multiplier = explosion.multiplier + 1
             monster.hurt(damage: 75, type: 3)
-        }
-
-        if monster.isDead {
-            let additionalScore: Int = monster.score * multiplier
-            GameProperties.score += additionalScore
         }
     }
 }

@@ -85,6 +85,10 @@ class Enemy: SKSpriteNode {
             damageOverTime(totalDamage: 100, damagePerSecond: 50)
             doIt = false
         }
+
+        if isDead {
+            destroy(pointsRewarded: score, multiplier: 1)
+        }
     }
 
     func damageOverTime(totalDamage: Int, damagePerSecond: Int) {

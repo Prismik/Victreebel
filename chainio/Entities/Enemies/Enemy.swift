@@ -18,6 +18,8 @@ class Enemy: SKSpriteNode {
 
     private(set) var score: Int = 100
 
+    public let elements: [Element.Type] = [Fire.self]
+    
     var isDead: Bool {
         get {
             return health <= 0
@@ -64,9 +66,13 @@ class Enemy: SKSpriteNode {
         }
     }
 
+    var doIt: Bool = true
     // TODO Damage type system + resistances
     func hurt(damage: Int, type: Int) {
-        health -= damage
+        if type == 2 {
+            health -= damage
+        }
+        
         let colorFlash: SKAction = SKAction.sequence([
             SKAction.colorize(with: .red, colorBlendFactor: 1.0, duration: 0.15),
             SKAction.colorize(with: .white, colorBlendFactor: 1.0, duration: 0.15)
@@ -75,6 +81,24 @@ class Enemy: SKSpriteNode {
             colorFlash,
             SKAction.playSoundFileNamed("explosion_2.wav", waitForCompletion: false)
         ]))
+        if doIt {
+            damageOverTime(totalDamage: 100, damagePerSecond: 50)
+            doIt = false
+        }
+    }
+
+    func damageOverTime(totalDamage: Int, damagePerSecond: Int) {
+        let numberOfTick: Int = totalDamage / damagePerSecond
+        let sequence: SKAction = SKAction.sequence([
+            SKAction.run({ [weak self] in
+                if let strongSelf = self {
+                    strongSelf.hurt(damage: damagePerSecond, type: 2)
+                }
+            }),
+            SKAction.wait(forDuration: 1)
+        ])
+
+        run(SKAction.repeat(sequence, count: numberOfTick))
     }
 
     func destroy(pointsRewarded: Int, multiplier: Int) {

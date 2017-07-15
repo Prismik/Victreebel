@@ -15,6 +15,7 @@
 		196937151EDA119D0073624F /* MathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196937141EDA119D0073624F /* MathExtensions.swift */; };
 		196937181EDB07760073624F /* ProjectileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196937171EDB07760073624F /* ProjectileManager.swift */; };
 		1969371A1EDB7F820073624F /* CGVector+Overloads.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196937191EDB7F820073624F /* CGVector+Overloads.swift */; };
+		197418141F1A76FB00C2EB52 /* SKSpriteNode+Overloads.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197418131F1A76FB00C2EB52 /* SKSpriteNode+Overloads.swift */; };
 		1996FAC31F0F0280003FB62D /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1996FAC21F0F0280003FB62D /* Element.swift */; };
 		1996FAC51F0F151C003FB62D /* CollisionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1996FAC41F0F151C003FB62D /* CollisionManager.swift */; };
 		1996FAC81F0F209E003FB62D /* LevelDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1996FAC71F0F209E003FB62D /* LevelDescriptor.swift */; };
@@ -71,6 +72,7 @@
 		196937141EDA119D0073624F /* MathExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathExtensions.swift; sourceTree = "<group>"; };
 		196937171EDB07760073624F /* ProjectileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectileManager.swift; path = Entities/Projectile/ProjectileManager.swift; sourceTree = "<group>"; };
 		196937191EDB7F820073624F /* CGVector+Overloads.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGVector+Overloads.swift"; sourceTree = "<group>"; };
+		197418131F1A76FB00C2EB52 /* SKSpriteNode+Overloads.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SKSpriteNode+Overloads.swift"; path = "Helpers/SKSpriteNode+Overloads.swift"; sourceTree = "<group>"; };
 		1996FAC21F0F0280003FB62D /* Element.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Element.swift; path = Entities/Elements/Element.swift; sourceTree = "<group>"; };
 		1996FAC41F0F151C003FB62D /* CollisionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollisionManager.swift; path = Scenes/CollisionManager.swift; sourceTree = "<group>"; };
 		1996FAC71F0F209E003FB62D /* LevelDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDescriptor.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				196937141EDA119D0073624F /* MathExtensions.swift */,
 				196937191EDB7F820073624F /* CGVector+Overloads.swift */,
 				199712AB1EEC333900940A60 /* CGSize+Overloads.swift */,
+				197418131F1A76FB00C2EB52 /* SKSpriteNode+Overloads.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				25C058791E6E661200AD3800 /* Player.swift in Sources */,
 				19F6585A1EECADD70030A700 /* FundsGenerator.swift in Sources */,
 				25A397E41E6DC4A9001FDBEC /* MainMenuScene.swift in Sources */,
+				197418141F1A76FB00C2EB52 /* SKSpriteNode+Overloads.swift in Sources */,
 				1961E8021EE978F500B0E665 /* Tile.swift in Sources */,
 				250737551E32BF4A0011B603 /* CGPoint+Overloads.swift in Sources */,
 				19ECBB781EF61B0A00A51539 /* TileSelectionIndicator.swift in Sources */,

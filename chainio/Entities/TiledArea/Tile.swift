@@ -30,6 +30,7 @@ class Tile: SKSpriteNode {
     var selectionIndicator: TileSelectionIndicator? {
         didSet {
             if let indicator = selectionIndicator {
+                indicator.position = CGPoint(x: width / 2, y: height / 2)
                 addChild(indicator)
             }
         }
@@ -38,6 +39,7 @@ class Tile: SKSpriteNode {
     init(size: CGSize, type: UInt32) {
         super.init(texture: nil, color: SKColor.clear, size: size)
 
+        anchorPoint = CGPoint.zero
         physicsBody = nil
         isUserInteractionEnabled = true
         tileDescriptorFlags |= type
@@ -89,7 +91,7 @@ class Tile: SKSpriteNode {
         construct = entity.init()
         construct?.zPosition = zPosition + 0.02
         addChild(construct!)
-        construct?.position = CGPoint(x: 0, y: -size.height / 2)
+        construct?.position = CGPoint(x: width / 2, y: 0)
         construct?.enableAugment()
         actionDelegate?.didBuildConstruct()
         tileDescriptorFlags &= ~TileTypes.buildable

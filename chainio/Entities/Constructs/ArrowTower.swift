@@ -10,6 +10,11 @@ import SpriteKit
 
 class ArrowTower: Construct {
     static let texture: SKTexture = SKTexture(imageNamed: "roundTower")
+
+    override var absolutePotition: CGPoint {
+        return super.absolutePotition + CGPoint(x: 0, y: height * 0.8)
+    }
+
     private let shooter: ProjectileShooter = ProjectileShooter(delay: 1.25, range: 250)
     required init() {
         super.init(texture: ArrowTower.texture, price: 50, name: "Arrow tower")

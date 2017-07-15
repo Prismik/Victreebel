@@ -80,8 +80,8 @@ class TiledArea: SKSpriteNode {
     }
 
     private func idealTileSize() -> CGSize {
-        let width = size.width / CGFloat(horizontalTileCount)
-        let height = size.height / CGFloat(verticalTileCount)
+        let width = self.width / CGFloat(horizontalTileCount)
+        let height = self.height / CGFloat(verticalTileCount)
         let idealUniformLength = min(width, height)
         return CGSize(width: idealUniformLength, height: idealUniformLength)
     }
@@ -97,7 +97,7 @@ class TiledArea: SKSpriteNode {
     }
 
     private func positionFromIndex(_ index: Int) -> CGPoint {
-        return gridPositionFromIndex(index) * idealTileSize().width + startingPoint + CGPoint(x: tileSize.width / 2, y: tileSize.height / 2)
+        return gridPositionFromIndex(index) * idealTileSize().width + startingPoint
     }
 
     private func gridPositionFromIndex(_ index: Int) -> CGPoint {

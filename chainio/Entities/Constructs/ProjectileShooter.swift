@@ -31,7 +31,7 @@ class ProjectileShooter {
 
     @objc
     private func prepareToShoot() {
-        if let position = delegate?.getPosition(), let enemy = EnemyManager.getClosestEnemy(from: position) {
+        if let position = delegate?.absolutePotition, let enemy = EnemyManager.getClosestEnemy(from: position) {
             let deltaPosition: CGVector = (enemy.position - position).asVector()
             if deltaPosition.length() <= maximumRange {
                 shoot(from: position, towards: deltaPosition.normalized())

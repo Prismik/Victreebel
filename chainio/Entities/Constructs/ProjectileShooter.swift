@@ -15,10 +15,12 @@ class ProjectileShooter {
     weak var delegate: AugmentDelegate?
 
     private var timer: Timer = Timer()
+    private let projectile: Projectile.Type
 
-    init(delay: TimeInterval, range: CGFloat) {
+    init(delay: TimeInterval, range: CGFloat, projectileType: Projectile.Type) {
         self.shootDelay = delay
         self.maximumRange = range
+        self.projectile = projectileType
     }
 
     deinit {
@@ -40,7 +42,7 @@ class ProjectileShooter {
     }
 
     private func shoot(from position: CGPoint, towards direction: CGVector) {
-        ProjectileManager.addProjectile(ofType: PropagatingProjectile.self, at: position, towards: direction * 500)
-        delegate?.play(sound: "laser.wav")
+        ProjectileManager.addProjectile(ofType: projectile, at: position, towards: direction * 500)
+        delegate?.playSound()
     }
 }

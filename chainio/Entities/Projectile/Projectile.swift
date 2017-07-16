@@ -10,21 +10,9 @@ import Foundation
 import SpriteKit
 
 class Projectile: SKSpriteNode {
-    private static var atlas: SKTextureAtlas? = nil
-    private static var textures: [SKTexture] = []
     private static var count: Int = 0
 
     let damage: Int = 50
-
-    public class func loadTextures() {
-        /*
-         Enemy.atlas = SKTextureAtlas(named: "explosion.atlas")
-         for i in 1...Enemy.atlas!.textureNames.count {
-         let name = "enemy\(i).png"
-         Explosion.textures.append(SKTexture(imageNamed: name))
-         }
-         */
-    }
 
     override init(texture: SKTexture?, color: SKColor, size: CGSize) {
         super.init(texture: texture, color: color, size: size)

@@ -10,5 +10,5 @@ import SpriteKit
 
 protocol AugmentDelegate: class {
     var absolutePotition: CGPoint { get }
-    func play(sound named: String)
+    func playSound()
 }

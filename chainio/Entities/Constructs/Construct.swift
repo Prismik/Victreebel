@@ -37,7 +37,7 @@ extension Construct: AugmentDelegate {
         return scene?.convert(position, from: self) ?? CGPoint.zero
     }
 
-    func play(sound named: String) {
-        run(SKAction.playSoundFileNamed(named, waitForCompletion: false))
+    func playSound() {
+        
     }
 }

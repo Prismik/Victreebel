@@ -1,26 +1,26 @@
 //
-//  ArrowTower.swift
+//  MagicTower.swift
 //  chainio
 //
-//  Created by Francis Beauchamp on 2017-06-10.
+//  Created by Francis Beauchamp on 2017-07-15.
 //  Copyright © 2017 Francis Beauchamp. All rights reserved.
 //
 
 import SpriteKit
 
-class ArrowTower: Construct {
-    static let texture: SKTexture = SKTexture(imageNamed: "roundTower")
+class MagicTower: Construct {
+    static let texture: SKTexture = SKTexture(imageNamed: "magicTower")
 
     override var absolutePotition: CGPoint {
         return super.absolutePotition + CGPoint(x: 0, y: height * 0.8)
     }
 
-    private let shooter: ProjectileShooter = ProjectileShooter(delay: 1.25, range: 250, projectileType: PropagatingProjectile.self)
+    private let shooter: ProjectileShooter = ProjectileShooter(delay: 0.7, range: 500, projectileType: FlameProjectile.self)
     required init() {
-        super.init(texture: ArrowTower.texture, price: 50, name: "Arrow tower")
+        super.init(texture: MagicTower.texture, price: 50, name: "Magic tower")
         shooter.delegate = self
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -30,6 +30,6 @@ class ArrowTower: Construct {
     }
 
     override func playSound() {
-        run(SKAction.playSoundFileNamed("laser", waitForCompletion: false))
+        run(SKAction.playSoundFileNamed("fireball", waitForCompletion: false))
     }
 }

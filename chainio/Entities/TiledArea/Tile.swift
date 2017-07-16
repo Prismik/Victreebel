@@ -69,9 +69,21 @@ class Tile: SKSpriteNode {
         if tileDescriptorFlags & TileTypes.selectable != 0 {
             select()
             if scene != nil {
-                // Present modal from scene OR have a modal controller present it OR populate dashboard with info
-                // 
-                // Dashboard [ info | categories vert scroll | horiz scrollable buildItems or empty ... | actions ]
+                let controller: RadialMenuController = RadialMenuController()
+                controller.present(from: self, at: CGPoint(x: width / 2, y: height / 2), with: [
+                    RadialMenuNode(texture: "arrows", action: {
+                        self.build(entity: ArrowTower.self)
+                    }),
+                    RadialMenuNode(texture: "sword", action: {
+                        self.build(entity: ArrowTower.self)
+                    }),
+                    RadialMenuNode(texture: "spell", action: {
+                        self.build(entity: MagicTower.self)
+                    }),
+                    RadialMenuNode(texture: "wall", action: {
+                        self.build(entity: ArrowTower.self)
+                    })
+                ])
             }
         }
     }

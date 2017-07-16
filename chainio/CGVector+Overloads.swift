@@ -10,6 +10,10 @@ import CoreGraphics
 import SpriteKit
 
 public extension CGVector {
+    static func fromAngle(_ angle: CGFloat) -> CGVector {
+        return CGVector(dx: cos(angle), dy: sin(angle))
+    }
+
     public func length() -> CGFloat {
         return sqrt(dx * dx + dy * dy)
     }

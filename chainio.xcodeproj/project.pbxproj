@@ -33,6 +33,7 @@
 		19D403C91F1AD72900D9A334 /* FlameProjectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D403C81F1AD72900D9A334 /* FlameProjectile.swift */; };
 		19D403CB1F1ADBFA00D9A334 /* ContentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D403CA1F1ADBFA00D9A334 /* ContentManager.swift */; };
 		19D403CD1F1AE7A700D9A334 /* flame.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 19D403CC1F1AE7A700D9A334 /* flame.atlas */; };
+		19D403D01F1BDBF400D9A334 /* LabelWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D403CF1F1BDBF400D9A334 /* LabelWithImage.swift */; };
 		19D6CAF51EE44AD8000338D1 /* EnemyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D6CAF41EE44AD8000338D1 /* EnemyManager.swift */; };
 		19D6CAF71EE487F1000338D1 /* GravityProjectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D6CAF61EE487F1000338D1 /* GravityProjectile.swift */; };
 		19D6CAF91EE48806000338D1 /* PropagatingProjectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D6CAF81EE48806000338D1 /* PropagatingProjectile.swift */; };
@@ -98,6 +99,7 @@
 		19D403C81F1AD72900D9A334 /* FlameProjectile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlameProjectile.swift; path = Entities/Projectile/FlameProjectile.swift; sourceTree = "<group>"; };
 		19D403CA1F1ADBFA00D9A334 /* ContentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentManager.swift; sourceTree = "<group>"; };
 		19D403CC1F1AE7A700D9A334 /* flame.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = flame.atlas; sourceTree = "<group>"; };
+		19D403CF1F1BDBF400D9A334 /* LabelWithImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LabelWithImage.swift; path = UI/Common/LabelWithImage.swift; sourceTree = "<group>"; };
 		19D6CAF41EE44AD8000338D1 /* EnemyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EnemyManager.swift; path = Entities/Enemies/EnemyManager.swift; sourceTree = "<group>"; };
 		19D6CAF61EE487F1000338D1 /* GravityProjectile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GravityProjectile.swift; path = Entities/Projectile/GravityProjectile.swift; sourceTree = "<group>"; };
 		19D6CAF81EE48806000338D1 /* PropagatingProjectile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PropagatingProjectile.swift; path = Entities/Projectile/PropagatingProjectile.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				197418161F1A8A7400C2EB52 /* RadialMenu */,
+				19D403CF1F1BDBF400D9A334 /* LabelWithImage.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				1961E8041EE9793200B0E665 /* TileTypes.swift in Sources */,
 				196937181EDB07760073624F /* ProjectileManager.swift in Sources */,
 				250737381E32BA120011B603 /* AppDelegate.swift in Sources */,
+				19D403D01F1BDBF400D9A334 /* LabelWithImage.swift in Sources */,
 				1974181C1F1A967400C2EB52 /* RadialMenuController.swift in Sources */,
 				199712AF1EEC4E0D00940A60 /* Construct.swift in Sources */,
 				19F658581EECAD290030A700 /* UnitSpawner.swift in Sources */,

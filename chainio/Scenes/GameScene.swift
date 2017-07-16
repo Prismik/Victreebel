@@ -13,11 +13,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var tiledArea: TiledArea!
     var infoArea: Dashboard!
 
+    var coinLabel: LabelWithImage!
+
     private let collisionManager: CollisionManager = CollisionManager()
     private let playAreaHeightPercentage: CGFloat = 0.8
 
     override func didMove(to view: SKView) {
         backgroundColor = SKColor.black
+
+        coinLabel = LabelWithImage(texture: SKTexture(imageNamed: "coins.png"), size: CGSize(width: 120, height: 24))
+        coinLabel.text = "\(GameProperties.funds)"
+        coinLabel.zPosition = 999999
+        coinLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left
+        coinLabel.verticalAlignmentMode = SKLabelVerticalAlignmentMode.center
+        coinLabel.position = CGPoint(x: 20, y: size.height - 40)
+        addChild(coinLabel)
 
         infoArea = Dashboard(size: CGSize(width: size.width, height: size.height * (1 - playAreaHeightPercentage)))
         infoArea.position = CGPoint(x: 0, y: 0)

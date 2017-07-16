@@ -41,8 +41,9 @@ class ProjectileShooter {
         }
     }
 
+    // TODO Delegate the shooting to the parent, as he knows how many projectiles to shoot
     private func shoot(from position: CGPoint, towards direction: CGVector) {
-        ProjectileManager.addProjectile(ofType: projectile, at: position, towards: direction * 500)
+        ProjectileManager.addProjectile(ofType: projectile, at: position, towards: direction * 200)
         delegate?.playSound()
     }
 }

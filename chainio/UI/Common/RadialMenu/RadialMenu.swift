@@ -8,7 +8,16 @@
 
 import SpriteKit
 
+protocol RadialMenuDelegate: class {
+    func didOpen()
+    func didClose()
+    func willOpen()
+    func willClose()
+}
+
 class RadialMenu: SKSpriteNode {
+    weak var delegate: RadialMenuDelegate?
+
     var nodes: [RadialMenuNode] = [] {
         didSet {
             removeAllChildren()
@@ -34,21 +43,26 @@ class RadialMenu: SKSpriteNode {
     }
 
     func show() {
+        delegate?.willOpen()
         let anglePerItem: CGFloat = 2 * CGFloat.pi / CGFloat(nodes.count)
         for (index, node) in nodes.enumerated() {
             let direction: CGVector = CGVector.fromAngle(anglePerItem * CGFloat(index) + anglePerItem / 2)
             node.animate(towards: CGPoint(x: direction.dx * radius, y: direction.dy * radius), scalingFactor: 1)
         }
 
-        run(SKAction.fadeAlpha(to: 1, duration: animationDuration))
+        run(SKAction.fadeAlpha(to: 1, duration: animationDuration), completion: {
+            self.delegate?.didOpen()
+        })
     }
 
     func close() {
+        delegate?.willClose()
         for node in nodes {
             node.animate(towards: CGPoint.zero, scalingFactor: 0)
         }
 
         run(SKAction.fadeAlpha(to: 0, duration: animationDuration), completion: {
+            self.delegate?.didClose()
             self.removeAllChildren()
             self.removeFromParent()
         })

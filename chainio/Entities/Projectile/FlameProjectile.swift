@@ -25,7 +25,7 @@ class FlameProjectile: Projectile {
         super.init(texture: texture, color: SKColor.clear, size: texture.size())
 
         zPosition = 998
-        run(SKAction.repeatForever(SKAction.animate(with: FlameProjectile.textures, timePerFrame: 0.05)))
+        run(SKAction.repeatForever(SKAction.animate(with: FlameProjectile.textures, timePerFrame: 0.1)))
 
     }
 

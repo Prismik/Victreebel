@@ -9,6 +9,7 @@
 import SpriteKit
 
 class TileSelectionIndicator: SKSpriteNode {
+    static let identifier: String = "TileSelectionIndicator"
     private let suroundingIndicator: SKShapeNode
     private let arrowIndicator: SKSpriteNode
 
@@ -25,8 +26,8 @@ class TileSelectionIndicator: SKSpriteNode {
         arrowIndicator.anchorPoint = CGPoint(x: 0.5, y: 0)
         arrowIndicator.zPosition = tileZPosition + 0.03
         super.init(texture: nil, color: SKColor.clear, size: size)
-        self.alpha = 0
-
+        alpha = 0
+        name = TileSelectionIndicator.identifier
         addChild(suroundingIndicator)
         addChild(arrowIndicator)
 
@@ -54,7 +55,7 @@ class TileSelectionIndicator: SKSpriteNode {
         run(fadeInAction)
     }
 
-    func hide(completion: (() -> Void)?) {
+    func hide(completion: (() -> Void)? = nil) {
         let fadeOutAction: SKAction = SKAction.fadeAlpha(to: 0, duration: animationDuration)
         
         self.run(fadeOutAction, completion: { [weak self] in

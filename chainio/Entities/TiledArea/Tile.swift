@@ -27,15 +27,6 @@ class Tile: SKSpriteNode {
     weak var selectionDelegate: TileSelectionDelegate?
     weak var actionDelegate: TileActionDelegate?
 
-    var selectionIndicator: TileSelectionIndicator? {
-        didSet {
-            if let indicator = selectionIndicator {
-                indicator.position = CGPoint(x: width / 2, y: height / 2)
-                addChild(indicator)
-            }
-        }
-    }
-
     init(size: CGSize, type: UInt32) {
         super.init(texture: nil, color: SKColor.clear, size: size)
 
@@ -67,36 +58,8 @@ class Tile: SKSpriteNode {
 
     private func handleSelection() {
         if tileDescriptorFlags & TileTypes.selectable != 0 {
-            select()
-            if scene != nil {
-                let controller: RadialMenuController = RadialMenuController()
-                controller.present(from: self, at: CGPoint(x: width / 2, y: height / 2), with: [
-                    RadialMenuNode(texture: "arrows", action: {
-                        self.build(entity: ArrowTower.self)
-                    }),
-                    RadialMenuNode(texture: "sword", action: {
-                        self.build(entity: ArrowTower.self)
-                    }),
-                    RadialMenuNode(texture: "spell", action: {
-                        self.build(entity: MagicTower.self)
-                    }),
-                    RadialMenuNode(texture: "wall", action: {
-                        self.build(entity: ArrowTower.self)
-                    })
-                ])
-            }
+            selectionDelegate?.didSelect(tile: self)
         }
-    }
-
-    func select() {
-        selectionDelegate?.didSelect(tile: self)
-        selectionIndicator?.show()
-    }
-
-    func unselect() {
-        selectionIndicator?.hide(completion: { [weak self] in
-            self?.selectionIndicator = nil
-        })
     }
 
     func build(entity: Construct.Type) {

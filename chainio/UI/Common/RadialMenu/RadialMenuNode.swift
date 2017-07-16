@@ -8,6 +8,11 @@
 
 import SpriteKit
 
+protocol RadialMenuNodeData {
+    var texture: String { get }
+    var action: (() -> Void)? { get }
+}
+
 protocol RadialMenuNodeDelegate: class {
     func didSelect(menuNode: RadialMenuNode)
 }

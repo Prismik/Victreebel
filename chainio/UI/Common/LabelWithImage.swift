@@ -8,15 +8,31 @@
 
 import SpriteKit
 
-class LabelWithBackground: SKLabelNode {
-    override init() {
-        super.init()
+class LabelWithBackground: SKSpriteNode {
+    fileprivate var label: SKLabelNode
+
+    var text: String? {
+        didSet {
+            label.text = text
+        }
     }
 
-    var background: SKSpriteNode!
+    var horizontalAlignmentMode: SKLabelHorizontalAlignmentMode = .center {
+        didSet {
+            label.horizontalAlignmentMode = horizontalAlignmentMode
+        }
+    }
+
+    var verticalAlignmentMode: SKLabelVerticalAlignmentMode = .baseline {
+        didSet {
+            label.verticalAlignmentMode = verticalAlignmentMode
+        }
+    }
+
     init(backgroundColor: SKColor, fontName: String, size: CGSize) {
-        background = SKSpriteNode(color: backgroundColor, size: size)
-        super.init(fontNamed: fontName)
+        label = SKLabelNode(fontNamed: fontName)
+        super.init(texture: nil, color: backgroundColor, size: size)
+        addChild(label)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -26,14 +42,12 @@ class LabelWithBackground: SKLabelNode {
 
 class LabelWithImage: LabelWithBackground {
     var image: SKSpriteNode!
-    override init() {
-        super.init()
-    }
 
     init(texture: SKTexture?, size: CGSize) {
         image = SKSpriteNode(texture: texture, color: .clear, size: texture?.size() ?? CGSize.zero)
-        image.position = CGPoint(x: -image.width / 2, y: 0)
         super.init(backgroundColor: .orange, fontName: "HelveticaNeue-Medium", size: size)
+        label.position = CGPoint(x: image.width, y: 0)
+        addChild(image)
     }
     
     required init?(coder aDecoder: NSCoder) {

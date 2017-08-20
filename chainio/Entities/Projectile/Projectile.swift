@@ -12,7 +12,7 @@ import SpriteKit
 class Projectile: SKSpriteNode {
     private static var count: Int = 0
 
-    let damage: Int = 50
+    let damage: Int = 20
 
     override init(texture: SKTexture?, color: SKColor, size: CGSize) {
         super.init(texture: texture, color: color, size: size)

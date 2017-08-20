@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		190562C31F0DB479006447A1 /* EnemySpawner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190562C21F0DB479006447A1 /* EnemySpawner.swift */; };
 		190562C51F0DB5E7006447A1 /* PathManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190562C41F0DB5E7006447A1 /* PathManager.swift */; };
+		1911886C1F33C38E00410116 /* HealthIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1911886B1F33C38E00410116 /* HealthIndicator.swift */; };
 		1961E7FD1EE978A100B0E665 /* TiledArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1961E7FC1EE978A100B0E665 /* TiledArea.swift */; };
 		1961E8021EE978F500B0E665 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1961E8011EE978F500B0E665 /* Tile.swift */; };
 		1961E8041EE9793200B0E665 /* TileTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1961E8031EE9793200B0E665 /* TileTypes.swift */; };
@@ -75,6 +76,7 @@
 /* Begin PBXFileReference section */
 		190562C21F0DB479006447A1 /* EnemySpawner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EnemySpawner.swift; path = Entities/Enemies/EnemySpawner.swift; sourceTree = "<group>"; };
 		190562C41F0DB5E7006447A1 /* PathManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PathManager.swift; path = Entities/Enemies/PathManager.swift; sourceTree = "<group>"; };
+		1911886B1F33C38E00410116 /* HealthIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HealthIndicator.swift; path = Entities/Enemies/HealthIndicator.swift; sourceTree = "<group>"; };
 		1961E7FC1EE978A100B0E665 /* TiledArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TiledArea.swift; path = Entities/TiledArea/TiledArea.swift; sourceTree = "<group>"; };
 		1961E8011EE978F500B0E665 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tile.swift; path = Entities/TiledArea/Tile.swift; sourceTree = "<group>"; };
 		1961E8031EE9793200B0E665 /* TileTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TileTypes.swift; path = Entities/TiledArea/TileTypes.swift; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 				19D6CAF41EE44AD8000338D1 /* EnemyManager.swift */,
 				190562C21F0DB479006447A1 /* EnemySpawner.swift */,
 				190562C41F0DB5E7006447A1 /* PathManager.swift */,
+				1911886B1F33C38E00410116 /* HealthIndicator.swift */,
 			);
 			name = Enemies;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				19F658561EECABB10030A700 /* ArrowTower.swift in Sources */,
 				1996FAC31F0F0280003FB62D /* Element.swift in Sources */,
 				19D6CAF51EE44AD8000338D1 /* EnemyManager.swift in Sources */,
+				1911886C1F33C38E00410116 /* HealthIndicator.swift in Sources */,
 				19D403CB1F1ADBFA00D9A334 /* ContentManager.swift in Sources */,
 				199712B91EECA73F00940A60 /* GameProperties.swift in Sources */,
 				1996FAC51F0F151C003FB62D /* CollisionManager.swift in Sources */,

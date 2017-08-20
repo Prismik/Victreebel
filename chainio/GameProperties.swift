@@ -11,6 +11,7 @@ import Foundation
 struct GamePropertiesSnapshot {
     let funds: Int
     let score: Int
+    let life: Int
 }
 
 protocol GamePropertiesObserver: class {
@@ -26,7 +27,16 @@ class GameProperties {
             }
         }
     }
+
     static var score: Int = 0 {
+        didSet {
+            for subscriber in subscribers {
+                subscriber.gamePropertiesDidChange()
+            }
+        }
+    }
+
+    static var life: Int = 20 {
         didSet {
             for subscriber in subscribers {
                 subscriber.gamePropertiesDidChange()

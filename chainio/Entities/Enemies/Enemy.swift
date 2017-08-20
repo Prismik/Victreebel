@@ -10,12 +10,18 @@ import Foundation
 import SpriteKit
 
 class Enemy: SKSpriteNode {
-    private(set) var health: Int = 100
+    private(set) var health: Int = 100 {
+        didSet {
+            healthIndicator.health = health
+        }
+    }
     private(set) var score: Int = 100
 
     private static var atlas: SKTextureAtlas? = nil
     private static var textures: [SKTexture] = []
     private static var count: Int = 0
+
+    private let healthIndicator: HealthIndicator
 
     public let elements: [Element.Type] = [Fire.self]
     
@@ -34,6 +40,8 @@ class Enemy: SKSpriteNode {
     init() {
         let index: Int = Int(Utils.random(min: 1, max: 3))
         let texture = Enemy.atlas!.textureNamed("enemy_\(index).png")
+
+        self.healthIndicator = HealthIndicator(width: 20, totalHealth: health)
         super.init(texture: texture, color: SKColor.clear, size: CGSize(width: 15, height: 15) /*texture.size()*/)
 
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -43,7 +51,10 @@ class Enemy: SKSpriteNode {
         physicsBody?.contactTestBitMask = PhysicsCategory.None
         physicsBody?.collisionBitMask = PhysicsCategory.None
         physicsBody?.fieldBitMask = PhysicsCategory.Blackhole
-        
+
+        healthIndicator.anchorPoint = CGPoint(x: 0, y: 0)
+        healthIndicator.position = CGPoint(x: -width / 2, y: height / 2 + 1)
+        addChild(healthIndicator)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -63,12 +74,9 @@ class Enemy: SKSpriteNode {
         }
     }
 
-    var doIt: Bool = true
     // TODO Damage type system + resistances
     func hurt(damage: Int, type: Int) {
-        if type == 2 {
-            health -= damage
-        }
+        health -= damage
         
         let colorFlash: SKAction = SKAction.sequence([
             SKAction.colorize(with: .red, colorBlendFactor: 1.0, duration: 0.15),
@@ -78,10 +86,6 @@ class Enemy: SKSpriteNode {
             colorFlash,
             SKAction.playSoundFileNamed("explosion_2.wav", waitForCompletion: false)
         ]))
-        if doIt {
-            damageOverTime(totalDamage: 100, damagePerSecond: 50)
-            doIt = false
-        }
 
         if isDead {
             destroy(pointsRewarded: score, multiplier: 1)
@@ -111,7 +115,9 @@ class Enemy: SKSpriteNode {
         points.position = position
         scene?.addChild(points)
         points.animate()
-        
+
+        GameProperties.funds += pointsRewarded
+
         EnemyManager.removeEnemy(self)
     }
 

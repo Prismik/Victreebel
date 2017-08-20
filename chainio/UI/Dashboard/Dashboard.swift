@@ -25,6 +25,7 @@ class Dashboard: SKSpriteNode {
 
         super.init(texture: nil, color: SKColor.clear, size: size)
 
+        isUserInteractionEnabled = true
         anchorPoint = CGPoint(x: 0, y: 0)
         buildableConstructsList.delegate = self
 
@@ -40,11 +41,31 @@ class Dashboard: SKSpriteNode {
 
     }
 
-    
+    func show() {
+        if isHidden {
+            isHidden = false
+            run(SKAction.moveBy(x: 0, y: height, duration: 0.3))
+        }
+    }
+
+    func hide() {
+        if !isHidden {
+            run(SKAction.moveBy(x: 0, y: -height, duration: 0.3), completion: { [weak self] in
+                self?.isHidden = true
+            })
+        }
+    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        hide()
+
+        super.touchesEnded(touches, with: event)
+    }
 }
 
 extension Dashboard: TileSelectionDelegate {
     func didSelect(tile: Tile) {
+        show()
         selectedTile = tile
         selectedTileDescriptor.tile = tile
     }
@@ -53,6 +74,8 @@ extension Dashboard: TileSelectionDelegate {
 extension Dashboard: CustomItemListDelegate {
     func didSelectItem(_ item: DashboardCustomItem) {
         if GameProperties.funds >= item.price {
+            hide()
+            GameProperties.funds -= item.price
             selectedTile?.build(entity: item.associatedStructure)
         }
     }

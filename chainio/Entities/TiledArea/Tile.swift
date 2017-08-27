@@ -17,7 +17,6 @@ protocol TileActionDelegate: class {
     func didRazeConstruct()
 }
 
-// TODO How to have multiples tiles binded together to hold a bigger entity
 class Tile: SKSpriteNode {
     private(set) var tileDescriptorFlags: UInt32 = TileTypes.none
     private(set) var construct: Construct?

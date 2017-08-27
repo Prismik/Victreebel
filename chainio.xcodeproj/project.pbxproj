@@ -44,6 +44,8 @@
 		19F658561EECABB10030A700 /* ArrowTower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F658551EECABB10030A700 /* ArrowTower.swift */; };
 		19F658581EECAD290030A700 /* UnitSpawner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F658571EECAD290030A700 /* UnitSpawner.swift */; };
 		19F6585A1EECADD70030A700 /* FundsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19F658591EECADD70030A700 /* FundsGenerator.swift */; };
+		19FEBFC81F510F45007FDFF7 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FEBFC71F510F45007FDFF7 /* Button.swift */; };
+		19FEBFCB1F522ACB007FDFF7 /* ModalDialogNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FEBFCA1F522ACB007FDFF7 /* ModalDialogNode.swift */; };
 		250737381E32BA120011B603 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250737371E32BA120011B603 /* AppDelegate.swift */; };
 		2507373E1E32BA120011B603 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2507373D1E32BA120011B603 /* GameScene.swift */; };
 		250737401E32BA120011B603 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2507373F1E32BA120011B603 /* GameViewController.swift */; };
@@ -111,6 +113,8 @@
 		19F658551EECABB10030A700 /* ArrowTower.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrowTower.swift; path = Entities/Constructs/ArrowTower.swift; sourceTree = "<group>"; };
 		19F658571EECAD290030A700 /* UnitSpawner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UnitSpawner.swift; path = Entities/Constructs/UnitSpawner.swift; sourceTree = "<group>"; };
 		19F658591EECADD70030A700 /* FundsGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FundsGenerator.swift; path = Entities/Constructs/FundsGenerator.swift; sourceTree = "<group>"; };
+		19FEBFC71F510F45007FDFF7 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Button.swift; path = UI/Common/Button/Button.swift; sourceTree = "<group>"; };
+		19FEBFCA1F522ACB007FDFF7 /* ModalDialogNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModalDialogNode.swift; path = UI/Common/ModalDialog/ModalDialogNode.swift; sourceTree = "<group>"; };
 		250737341E32BA120011B603 /* chainio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chainio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		250737371E32BA120011B603 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2507373D1E32BA120011B603 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameScene.swift; path = Scenes/GameScene.swift; sourceTree = "<group>"; };
@@ -179,6 +183,8 @@
 		197418151F1A8A6A00C2EB52 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				19FEBFC91F522946007FDFF7 /* ModalDialog */,
+				19FEBFC61F510F17007FDFF7 /* Button */,
 				197418161F1A8A7400C2EB52 /* RadialMenu */,
 				19D403CF1F1BDBF400D9A334 /* LabelWithImage.swift */,
 			);
@@ -269,6 +275,22 @@
 				1911886B1F33C38E00410116 /* HealthIndicator.swift */,
 			);
 			name = Enemies;
+			sourceTree = "<group>";
+		};
+		19FEBFC61F510F17007FDFF7 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				19FEBFC71F510F45007FDFF7 /* Button.swift */,
+			);
+			name = Button;
+			sourceTree = "<group>";
+		};
+		19FEBFC91F522946007FDFF7 /* ModalDialog */ = {
+			isa = PBXGroup;
+			children = (
+				19FEBFCA1F522ACB007FDFF7 /* ModalDialogNode.swift */,
+			);
+			name = ModalDialog;
 			sourceTree = "<group>";
 		};
 		2507372B1E32BA120011B603 = {
@@ -444,6 +466,7 @@
 				197418141F1A76FB00C2EB52 /* SKSpriteNode+Overloads.swift in Sources */,
 				1961E8021EE978F500B0E665 /* Tile.swift in Sources */,
 				250737551E32BF4A0011B603 /* CGPoint+Overloads.swift in Sources */,
+				19FEBFCB1F522ACB007FDFF7 /* ModalDialogNode.swift in Sources */,
 				19ECBB781EF61B0A00A51539 /* TileSelectionIndicator.swift in Sources */,
 				2507373E1E32BA120011B603 /* GameScene.swift in Sources */,
 				190562C31F0DB479006447A1 /* EnemySpawner.swift in Sources */,
@@ -453,6 +476,7 @@
 				25DA00DB1E7476F1002321CE /* WeaponRail.swift in Sources */,
 				2592A1AC1E772C47008F7DEE /* Dashboard.swift in Sources */,
 				197418181F1A94A300C2EB52 /* RadialMenu.swift in Sources */,
+				19FEBFC81F510F45007FDFF7 /* Button.swift in Sources */,
 				2511C8EC1E68DF2100992CD2 /* Points.swift in Sources */,
 				1961E7FD1EE978A100B0E665 /* TiledArea.swift in Sources */,
 				196937151EDA119D0073624F /* MathExtensions.swift in Sources */,

@@ -33,7 +33,6 @@ class Construct: SKSpriteNode {
 
 extension Construct: AugmentDelegate {
     var absolutePotition: CGPoint {
-//        guard let parent = parent else { return CGPoint.zero }
         return scene?.convert(position, from: self) ?? CGPoint.zero
     }
 

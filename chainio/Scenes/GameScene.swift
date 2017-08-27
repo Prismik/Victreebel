@@ -17,6 +17,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var lifeLabel: SKLabelNode!
     var scoreLabel: SKLabelNode!
 
+    var settingsButton: Button!
+
     private let collisionManager: CollisionManager = CollisionManager()
     private let playAreaHeightPercentage: CGFloat = 0.8
     private let verticalMargin: CGFloat = 10
@@ -35,6 +37,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         scoreLabel = SKLabelNode(text: "\(GameProperties.score)")
         let scoreFrame = configure(label: scoreLabel, at: CGPoint(x: lifeFrame.minX, y: lifeFrame.minY - labelContainerHeight - verticalMargin), with: CGSize(width: coinFrame.maxX - lifeFrame.minX, height: labelContainerHeight), using: "coins.png", backgroundColor: SKColor(r: 21, g: 21, b: 21, a: 0.6))
+
         infoArea = Dashboard(size: CGSize(width: size.width, height: size.height * (1 - playAreaHeightPercentage)))
         infoArea.position = CGPoint(x: 0, y: 0)
         infoArea.anchorPoint = CGPoint(x: 0, y: 0)
@@ -46,6 +49,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         tiledArea.delegate = infoArea
         addChild(tiledArea)
         tiledArea.configureSpawner()
+
+        settingsButton = Button(defaultTexture: SKTexture(imageNamed: "normal.png"),
+                                disabledTexture: SKTexture(imageNamed: "disabled.png"),
+                                selectedTexture: SKTexture(imageNamed: "pressed.png"))
+        settingsButton.position = CGPoint(x: size.width - settingsButton.width / 2, y: size.height - settingsButton.height / 2)
+        settingsButton.setAction(action: {
+            
+        })
+        settingsButton.zPosition = 99999
+        addChild(settingsButton)
 
         physicsWorld.gravity = CGVector.zero
         physicsWorld.contactDelegate = collisionManager

@@ -16,7 +16,6 @@
 		196937151EDA119D0073624F /* MathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196937141EDA119D0073624F /* MathExtensions.swift */; };
 		196937181EDB07760073624F /* ProjectileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196937171EDB07760073624F /* ProjectileManager.swift */; };
 		1969371A1EDB7F820073624F /* CGVector+Overloads.swift in Sources */ = {isa = PBXBuildFile; fileRef = 196937191EDB7F820073624F /* CGVector+Overloads.swift */; };
-		197418141F1A76FB00C2EB52 /* SKSpriteNode+Overloads.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197418131F1A76FB00C2EB52 /* SKSpriteNode+Overloads.swift */; };
 		197418181F1A94A300C2EB52 /* RadialMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197418171F1A94A300C2EB52 /* RadialMenu.swift */; };
 		1974181A1F1A94B900C2EB52 /* RadialMenuNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197418191F1A94B900C2EB52 /* RadialMenuNode.swift */; };
 		1974181C1F1A967400C2EB52 /* RadialMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1974181B1F1A967400C2EB52 /* RadialMenuController.swift */; };
@@ -28,6 +27,8 @@
 		199712B51EECA5D700940A60 /* DashboardCustomItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199712B41EECA5D700940A60 /* DashboardCustomItemList.swift */; };
 		199712B71EECA68D00940A60 /* DashboardCustomItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199712B61EECA68D00940A60 /* DashboardCustomItem.swift */; };
 		199712B91EECA73F00940A60 /* GameProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199712B81EECA73F00940A60 /* GameProperties.swift */; };
+		19A9F5C01F890F8A0024EEB4 /* SKNode+Positions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A9F5BF1F890F8A0024EEB4 /* SKNode+Positions.swift */; };
+		19A9F5C21F8941620024EEB4 /* UIEdgeInsets+Margins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A9F5C11F8941620024EEB4 /* UIEdgeInsets+Margins.swift */; };
 		19C47C0D1F0C57BC005A1B29 /* Augment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C47C0C1F0C57BC005A1B29 /* Augment.swift */; };
 		19D403C31F1ACCDD00D9A334 /* MagicTower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D403C21F1ACCDD00D9A334 /* MagicTower.swift */; };
 		19D403C51F1AD6BF00D9A334 /* fireball.wav in Resources */ = {isa = PBXBuildFile; fileRef = 19D403C41F1AD6BF00D9A334 /* fireball.wav */; };
@@ -85,7 +86,6 @@
 		196937141EDA119D0073624F /* MathExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathExtensions.swift; sourceTree = "<group>"; };
 		196937171EDB07760073624F /* ProjectileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProjectileManager.swift; path = Entities/Projectile/ProjectileManager.swift; sourceTree = "<group>"; };
 		196937191EDB7F820073624F /* CGVector+Overloads.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGVector+Overloads.swift"; sourceTree = "<group>"; };
-		197418131F1A76FB00C2EB52 /* SKSpriteNode+Overloads.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SKSpriteNode+Overloads.swift"; path = "Helpers/SKSpriteNode+Overloads.swift"; sourceTree = "<group>"; };
 		197418171F1A94A300C2EB52 /* RadialMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RadialMenu.swift; path = UI/Common/RadialMenu/RadialMenu.swift; sourceTree = "<group>"; };
 		197418191F1A94B900C2EB52 /* RadialMenuNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RadialMenuNode.swift; path = UI/Common/RadialMenu/RadialMenuNode.swift; sourceTree = "<group>"; };
 		1974181B1F1A967400C2EB52 /* RadialMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RadialMenuController.swift; path = UI/Common/RadialMenu/RadialMenuController.swift; sourceTree = "<group>"; };
@@ -97,6 +97,8 @@
 		199712B41EECA5D700940A60 /* DashboardCustomItemList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DashboardCustomItemList.swift; path = UI/Dashboard/DashboardCustomItemList.swift; sourceTree = "<group>"; };
 		199712B61EECA68D00940A60 /* DashboardCustomItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DashboardCustomItem.swift; path = UI/Dashboard/DashboardCustomItem.swift; sourceTree = "<group>"; };
 		199712B81EECA73F00940A60 /* GameProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameProperties.swift; sourceTree = "<group>"; };
+		19A9F5BF1F890F8A0024EEB4 /* SKNode+Positions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SKNode+Positions.swift"; path = "Helpers/SKNode+Positions.swift"; sourceTree = "<group>"; };
+		19A9F5C11F8941620024EEB4 /* UIEdgeInsets+Margins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIEdgeInsets+Margins.swift"; path = "Helpers/UIEdgeInsets+Margins.swift"; sourceTree = "<group>"; };
 		19C47C0C1F0C57BC005A1B29 /* Augment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Augment.swift; path = Entities/Constructs/Augment.swift; sourceTree = "<group>"; };
 		19D403C21F1ACCDD00D9A334 /* MagicTower.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MagicTower.swift; path = Entities/Constructs/MagicTower.swift; sourceTree = "<group>"; };
 		19D403C41F1AD6BF00D9A334 /* fireball.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fireball.wav; sourceTree = "<group>"; };
@@ -226,7 +228,8 @@
 				196937141EDA119D0073624F /* MathExtensions.swift */,
 				196937191EDB7F820073624F /* CGVector+Overloads.swift */,
 				199712AB1EEC333900940A60 /* CGSize+Overloads.swift */,
-				197418131F1A76FB00C2EB52 /* SKSpriteNode+Overloads.swift */,
+				19A9F5BF1F890F8A0024EEB4 /* SKNode+Positions.swift */,
+				19A9F5C11F8941620024EEB4 /* UIEdgeInsets+Margins.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -402,7 +405,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Francis Beauchamp";
 				TargetAttributes = {
 					250737331E32BA120011B603 = {
@@ -463,11 +466,11 @@
 				25C058791E6E661200AD3800 /* Player.swift in Sources */,
 				19F6585A1EECADD70030A700 /* FundsGenerator.swift in Sources */,
 				25A397E41E6DC4A9001FDBEC /* MainMenuScene.swift in Sources */,
-				197418141F1A76FB00C2EB52 /* SKSpriteNode+Overloads.swift in Sources */,
 				1961E8021EE978F500B0E665 /* Tile.swift in Sources */,
 				250737551E32BF4A0011B603 /* CGPoint+Overloads.swift in Sources */,
 				19FEBFCB1F522ACB007FDFF7 /* ModalDialogNode.swift in Sources */,
 				19ECBB781EF61B0A00A51539 /* TileSelectionIndicator.swift in Sources */,
+				19A9F5C01F890F8A0024EEB4 /* SKNode+Positions.swift in Sources */,
 				2507373E1E32BA120011B603 /* GameScene.swift in Sources */,
 				190562C31F0DB479006447A1 /* EnemySpawner.swift in Sources */,
 				2563DA251E6BCECE008A3FBA /* Utils.swift in Sources */,
@@ -504,6 +507,7 @@
 				1996FAC51F0F151C003FB62D /* CollisionManager.swift in Sources */,
 				19D6CAF91EE48806000338D1 /* PropagatingProjectile.swift in Sources */,
 				19D6CAF71EE487F1000338D1 /* GravityProjectile.swift in Sources */,
+				19A9F5C21F8941620024EEB4 /* UIEdgeInsets+Margins.swift in Sources */,
 				1961E8041EE9793200B0E665 /* TileTypes.swift in Sources */,
 				196937181EDB07760073624F /* ProjectileManager.swift in Sources */,
 				250737381E32BA120011B603 /* AppDelegate.swift in Sources */,
@@ -545,7 +549,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -553,7 +559,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -596,7 +606,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -604,7 +616,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;

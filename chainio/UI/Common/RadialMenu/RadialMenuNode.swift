@@ -40,10 +40,12 @@ class RadialMenuNode: SKCropNode {
     }
 
     func animate(towards point: CGPoint, scalingFactor: CGFloat) {
-        run(SKAction.group([
-            SKAction.move(to: point, duration: 0.3),
+        let actions = SKAction.group([
+            SKAction.move(to: point, duration: 0.45),
             SKAction.scaleX(to: scalingFactor, y: scalingFactor, duration: 0.3)
-        ]))
+        ])
+        actions.timingMode = SKActionTimingMode.easeInEaseOut
+        run(actions)
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

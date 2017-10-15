@@ -57,7 +57,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                                 selectedTexture: SKTexture(imageNamed: "pressed.png"))
         settingsButton.position = CGPoint(x: size.width - settingsButton.width / 2, y: size.height - settingsButton.height / 2)
         settingsButton.setAction(action: {
-            
+
         })
         settingsButton.zPosition = 99999
         addChild(settingsButton)

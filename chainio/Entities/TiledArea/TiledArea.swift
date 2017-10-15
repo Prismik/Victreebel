@@ -71,7 +71,7 @@ class TiledArea: SKSpriteNode {
             spawner.path = pathTiles.map({ tile in tile.position })
         }
 
-        spawner.activate()
+//        spawner.activate()
     }
 
     private func addTile(_ tile: Tile, at position: CGPoint) {

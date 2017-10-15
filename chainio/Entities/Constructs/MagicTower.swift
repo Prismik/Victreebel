@@ -25,7 +25,7 @@ class MagicTower: Construct {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func enableAugment() {
+    @objc   override func enableAugment() {
         shooter.enable()
     }
 

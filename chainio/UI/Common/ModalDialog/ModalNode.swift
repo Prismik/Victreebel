@@ -6,4 +6,15 @@
 //  Copyright © 2017 Francis Beauchamp. All rights reserved.
 //
 
-import Foundation
+import SpriteKit
+
+class ModalNode: SKSpriteNode {
+
+}
+
+extension SKScene {
+    func present() {
+        
+    }
+}
+

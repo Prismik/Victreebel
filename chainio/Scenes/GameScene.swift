@@ -31,7 +31,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         GameProperties.subscribe(self)
         backgroundColor = SKColor.black
 
-        let lifeContainer = configure(label: lifeLabel, with: CGSize(width: 50, height: labelContainerHeight), using: "coins.png", backgroundColor: containerColor)
+        let lifeContainer = configure(label: lifeLabel, with: CGSize(width: 50, height: labelContainerHeight), using: "heart.png", backgroundColor: containerColor)
         lifeContainer.position = CGPoint(x: 20, y: size.height - 40)
 
         let coinContainer = configure(label: coinLabel, with: CGSize(width: 70, height: labelContainerHeight), using: "coins.png", backgroundColor: containerColor)

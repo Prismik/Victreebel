@@ -9,7 +9,7 @@
 import SpriteKit
 
 protocol RadialMenuNodeData {
-    var texture: String { get }
+    var texture: SKTexture { get }
     var action: (() -> Void)? { get }
 }
 
@@ -21,7 +21,7 @@ class RadialMenuNode: SKCropNode {
     weak var delegate: RadialMenuNodeDelegate?
 
     private let action: (() -> Void)?
-    init(texture: String, action: (() -> Void)? = nil) {
+    init(texture: SKTexture, action: (() -> Void)? = nil) {
         self.action = action
         super.init()
         let mask = SKShapeNode(circleOfRadius: 15)
@@ -31,7 +31,6 @@ class RadialMenuNode: SKCropNode {
         yScale = 0
         zPosition = 999999
         isUserInteractionEnabled = true
-        let texture: SKTexture = SKTexture(imageNamed: texture)
         let child = SKSpriteNode(texture: texture, color: .clear, size: CGSize(width: 20, height: 20))
         addChild(child)
     }

@@ -24,8 +24,6 @@
 		1996FAC81F0F209E003FB62D /* LevelDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1996FAC71F0F209E003FB62D /* LevelDescriptor.swift */; };
 		199712AC1EEC333900940A60 /* CGSize+Overloads.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199712AB1EEC333900940A60 /* CGSize+Overloads.swift */; };
 		199712AF1EEC4E0D00940A60 /* Construct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199712AE1EEC4E0D00940A60 /* Construct.swift */; };
-		199712B51EECA5D700940A60 /* DashboardCustomItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199712B41EECA5D700940A60 /* DashboardCustomItemList.swift */; };
-		199712B71EECA68D00940A60 /* DashboardCustomItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199712B61EECA68D00940A60 /* DashboardCustomItem.swift */; };
 		199712B91EECA73F00940A60 /* GameProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199712B81EECA73F00940A60 /* GameProperties.swift */; };
 		19A9F5C01F890F8A0024EEB4 /* SKNode+Positions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A9F5BF1F890F8A0024EEB4 /* SKNode+Positions.swift */; };
 		19A9F5C21F8941620024EEB4 /* UIEdgeInsets+Margins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A9F5C11F8941620024EEB4 /* UIEdgeInsets+Margins.swift */; };
@@ -95,8 +93,6 @@
 		1996FAC71F0F209E003FB62D /* LevelDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDescriptor.swift; sourceTree = "<group>"; };
 		199712AB1EEC333900940A60 /* CGSize+Overloads.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CGSize+Overloads.swift"; path = "Helpers/CGSize+Overloads.swift"; sourceTree = "<group>"; };
 		199712AE1EEC4E0D00940A60 /* Construct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Construct.swift; path = Entities/Constructs/Construct.swift; sourceTree = "<group>"; };
-		199712B41EECA5D700940A60 /* DashboardCustomItemList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DashboardCustomItemList.swift; path = UI/Dashboard/DashboardCustomItemList.swift; sourceTree = "<group>"; };
-		199712B61EECA68D00940A60 /* DashboardCustomItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DashboardCustomItem.swift; path = UI/Dashboard/DashboardCustomItem.swift; sourceTree = "<group>"; };
 		199712B81EECA73F00940A60 /* GameProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameProperties.swift; sourceTree = "<group>"; };
 		19A9F5BF1F890F8A0024EEB4 /* SKNode+Positions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SKNode+Positions.swift"; path = "Helpers/SKNode+Positions.swift"; sourceTree = "<group>"; };
 		19A9F5C11F8941620024EEB4 /* UIEdgeInsets+Margins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIEdgeInsets+Margins.swift"; path = "Helpers/UIEdgeInsets+Margins.swift"; sourceTree = "<group>"; };
@@ -253,9 +249,7 @@
 		199712B01EECA3D200940A60 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
-				199712B41EECA5D700940A60 /* DashboardCustomItemList.swift */,
 				2592A1AB1E772C47008F7DEE /* Dashboard.swift */,
-				199712B61EECA68D00940A60 /* DashboardCustomItem.swift */,
 				19ECBB751EF5B7FC00A51539 /* TileDescriptor.swift */,
 			);
 			name = Dashboard;
@@ -492,7 +486,6 @@
 				190562C51F0DB5E7006447A1 /* PathManager.swift in Sources */,
 				19D403C91F1AD72900D9A334 /* FlameProjectile.swift in Sources */,
 				25BB620E1E688B2000086BFB /* Enemy.swift in Sources */,
-				199712B71EECA68D00940A60 /* DashboardCustomItem.swift in Sources */,
 				19C47C0D1F0C57BC005A1B29 /* Augment.swift in Sources */,
 				250737401E32BA120011B603 /* GameViewController.swift in Sources */,
 				199712AC1EEC333900940A60 /* CGSize+Overloads.swift in Sources */,
@@ -502,7 +495,6 @@
 				19D403C31F1ACCDD00D9A334 /* MagicTower.swift in Sources */,
 				25DA00DD1E74774B002321CE /* Turret.swift in Sources */,
 				25CF49B71E5776F800A121DD /* Explosion.swift in Sources */,
-				199712B51EECA5D700940A60 /* DashboardCustomItemList.swift in Sources */,
 				19F658561EECABB10030A700 /* ArrowTower.swift in Sources */,
 				1996FAC31F0F0280003FB62D /* Element.swift in Sources */,
 				19D6CAF51EE44AD8000338D1 /* EnemyManager.swift in Sources */,

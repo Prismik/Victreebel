@@ -19,7 +19,7 @@ protocol TileActionDelegate: class {
 
 class Tile: SKSpriteNode {
     private(set) var tileDescriptorFlags: UInt32 = TileTypes.none
-    private(set) var construct: Construct?
+    private(set) var construct: (SKSpriteNode & Construct)?
 
     private var isTouchTarget: Bool = false
 
@@ -61,8 +61,15 @@ class Tile: SKSpriteNode {
         }
     }
 
+    func availableUpgrades() -> [Construct.Type] {
+        return construct?.availableUpgrades() ?? [ArrowTower.self, MagicTower.self, ArrowTower.self]
+    }
+
     func build(entity: Construct.Type) {
-        construct = entity.init()
+        if let superType = entity as? SKSpriteNode.Type {
+            construct = (superType.init() as! (SKSpriteNode & Construct))
+        }
+
         construct?.zPosition = zPosition + 0.02
         addChild(construct!)
         construct?.position = CGPoint(x: width / 2, y: 0)

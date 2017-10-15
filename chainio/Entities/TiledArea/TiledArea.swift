@@ -9,7 +9,7 @@
 import SpriteKit
 
 struct TileRadialMenuNodeData: RadialMenuNodeData {
-    var texture: String
+    var texture: SKTexture
     var action: (() -> Void)?
 }
 
@@ -153,31 +153,20 @@ extension TiledArea: TileSelectionDelegate {
 
     private func showSelectionIndicator(on tile: Tile) {
         let indicator = TileSelectionIndicator(size: tileSize, tileZPosition: tile.zPosition)
-        indicator.position = CGPoint(x: tileSize.width / 2, y: tileSize.height / 2)
+        indicator.position = tile.center
         currentSelectedTile?.addChild(indicator)
         indicator.show()
     }
 
     private func present(_ controller: RadialMenuController, on tile: Tile) {
-        let options: [TileRadialMenuNodeData] = [
-            TileRadialMenuNodeData(texture: "arrows", action: {
-                tile.build(entity: ArrowTower.self)
-                self.unselectCurrentTile()
-            }),
-            TileRadialMenuNodeData(texture: "sword", action: {
-                tile.build(entity: ArrowTower.self)
-                self.unselectCurrentTile()
-            }),
-            TileRadialMenuNodeData(texture: "spell", action: {
-                tile.build(entity: MagicTower.self)
-                self.unselectCurrentTile()
-            }),
-            TileRadialMenuNodeData(texture: "wall", action: {
-                tile.build(entity: ArrowTower.self)
+        let options: [TileRadialMenuNodeData] = tile.availableUpgrades().map({ upgrade in
+            return TileRadialMenuNodeData(texture: upgrade.uiTexture, action: {
+                tile.build(entity: upgrade)
                 self.unselectCurrentTile()
             })
-        ]
-        controller.present(from: tile, at: CGPoint(x: tile.width / 2, y: tile.height / 2), with: options, completion: {
+        })
+
+        controller.present(from: tile, at: tile.center, with: options, completion: {
             self.currentController = controller
         })
     }

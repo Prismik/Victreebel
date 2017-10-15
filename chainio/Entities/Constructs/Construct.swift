@@ -8,35 +8,9 @@
 
 import SpriteKit
 
-class Construct: SKSpriteNode {
-    let price: Int
-
-    init(texture: SKTexture?, price: Int, name: String) {
-        self.price = price
-        super.init(texture: texture, color: UIColor.clear, size: texture?.size() ?? CGSize.zero)
-        self.name = name
-        anchorPoint = CGPoint(x: 0.5, y: 0)
-    }
-
-    required convenience init() {
-        self.init(texture: nil, price: 0, name: "")
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    func enableAugment() {
-        
-    }
-}
-
-extension Construct: AugmentDelegate {
-    var absolutePotition: CGPoint {
-        return scene?.convert(position, from: self) ?? CGPoint.zero
-    }
-
-    func playSound() {
-        
-    }
+protocol Construct: class {
+    var price: Int { get }
+    static var uiTexture: SKTexture { get }
+    func enableAugment()
+    func availableUpgrades() -> [Construct.Type]
 }

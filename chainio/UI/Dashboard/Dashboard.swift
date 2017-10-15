@@ -10,7 +10,6 @@ import Foundation
 import SpriteKit
 
 class Dashboard: SKSpriteNode {
-    private let buildableConstructsList: DashboardCustomItemList
     fileprivate let selectedTileDescriptor: TileDescriptor
 
     fileprivate var selectedTile: Tile?
@@ -20,17 +19,13 @@ class Dashboard: SKSpriteNode {
 
         selectedTileDescriptor = TileDescriptor(size: selectedTileDescriptorSize)
         selectedTileDescriptor.position = CGPoint.zero
-        buildableConstructsList = DashboardCustomItemList(size: constructListSize)
-        buildableConstructsList.position = CGPoint(x: selectedTileDescriptorSize.width, y: 0)
 
         super.init(texture: nil, color: SKColor.clear, size: size)
 
         isUserInteractionEnabled = true
         anchorPoint = CGPoint(x: 0, y: 0)
-        buildableConstructsList.delegate = self
 
         addChild(selectedTileDescriptor)
-        addChild(buildableConstructsList)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -68,15 +63,5 @@ extension Dashboard: TileSelectionDelegate {
         show()
         selectedTile = tile
         selectedTileDescriptor.tile = tile
-    }
-}
-
-extension Dashboard: CustomItemListDelegate {
-    func didSelectItem(_ item: DashboardCustomItem) {
-        if GameProperties.funds >= item.price {
-            hide()
-            GameProperties.funds -= item.price
-            selectedTile?.build(entity: item.associatedStructure)
-        }
     }
 }

@@ -30,6 +30,7 @@
 		19B4118C1F894CC7005F664E /* ModalNodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B4118B1F894CC6005F664E /* ModalNodeController.swift */; };
 		19C47C0D1F0C57BC005A1B29 /* Augment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C47C0C1F0C57BC005A1B29 /* Augment.swift */; };
 		19C4F1D01FAE29AF005B114F /* Bank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C4F1CF1FAE29AF005B114F /* Bank.swift */; };
+		19C4F1D21FAE42ED005B114F /* IsometricHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C4F1D11FAE42ED005B114F /* IsometricHelper.swift */; };
 		19D403C31F1ACCDD00D9A334 /* MagicTower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D403C21F1ACCDD00D9A334 /* MagicTower.swift */; };
 		19D403C51F1AD6BF00D9A334 /* fireball.wav in Resources */ = {isa = PBXBuildFile; fileRef = 19D403C41F1AD6BF00D9A334 /* fireball.wav */; };
 		19D403C91F1AD72900D9A334 /* FlameProjectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D403C81F1AD72900D9A334 /* FlameProjectile.swift */; };
@@ -100,6 +101,7 @@
 		19B4118B1F894CC6005F664E /* ModalNodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ModalNodeController.swift; path = Common/ModalNodeController.swift; sourceTree = "<group>"; };
 		19C47C0C1F0C57BC005A1B29 /* Augment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Augment.swift; path = Entities/Constructs/Augment.swift; sourceTree = "<group>"; };
 		19C4F1CF1FAE29AF005B114F /* Bank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Bank.swift; path = Entities/Constructs/Bank.swift; sourceTree = "<group>"; };
+		19C4F1D11FAE42ED005B114F /* IsometricHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IsometricHelper.swift; path = Entities/TiledArea/IsometricHelper.swift; sourceTree = "<group>"; };
 		19D403C21F1ACCDD00D9A334 /* MagicTower.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MagicTower.swift; path = Entities/Constructs/MagicTower.swift; sourceTree = "<group>"; };
 		19D403C41F1AD6BF00D9A334 /* fireball.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fireball.wav; sourceTree = "<group>"; };
 		19D403C81F1AD72900D9A334 /* FlameProjectile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlameProjectile.swift; path = Entities/Projectile/FlameProjectile.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				1961E8011EE978F500B0E665 /* Tile.swift */,
 				1961E8031EE9793200B0E665 /* TileTypes.swift */,
 				19ECBB771EF61B0A00A51539 /* TileSelectionIndicator.swift */,
+				19C4F1D11FAE42ED005B114F /* IsometricHelper.swift */,
 			);
 			name = TiledArea;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 				19FEBFCB1F522ACB007FDFF7 /* ModalNode.swift in Sources */,
 				19ECBB781EF61B0A00A51539 /* TileSelectionIndicator.swift in Sources */,
 				19A9F5C01F890F8A0024EEB4 /* SKNode+Positions.swift in Sources */,
+				19C4F1D21FAE42ED005B114F /* IsometricHelper.swift in Sources */,
 				2507373E1E32BA120011B603 /* GameScene.swift in Sources */,
 				190562C31F0DB479006447A1 /* EnemySpawner.swift in Sources */,
 				19B4118C1F894CC7005F664E /* ModalNodeController.swift in Sources */,

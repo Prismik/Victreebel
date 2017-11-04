@@ -46,11 +46,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(infoArea)
 
         tiledArea = TiledArea(desiredSize: CGSize(width: size.width, height: size.height * playAreaHeightPercentage),
-                              horizontalTileCount: 16, verticalTileCount: 6)
+                              horizontalTileCount: 6, verticalTileCount: 6)
         tiledArea.position = CGPoint(x: 0, y: size.height * (1 - playAreaHeightPercentage))
         tiledArea.delegate = infoArea
         addChild(tiledArea)
-        tiledArea.configureSpawner()
 
         settingsButton = Button(defaultTexture: SKTexture(imageNamed: "normal.png"),
                                 disabledTexture: SKTexture(imageNamed: "disabled.png"),

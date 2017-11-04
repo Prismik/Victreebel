@@ -29,6 +29,7 @@
 		19A9F5C21F8941620024EEB4 /* UIEdgeInsets+Margins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A9F5C11F8941620024EEB4 /* UIEdgeInsets+Margins.swift */; };
 		19B4118C1F894CC7005F664E /* ModalNodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B4118B1F894CC6005F664E /* ModalNodeController.swift */; };
 		19C47C0D1F0C57BC005A1B29 /* Augment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C47C0C1F0C57BC005A1B29 /* Augment.swift */; };
+		19C4F1D01FAE29AF005B114F /* Bank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C4F1CF1FAE29AF005B114F /* Bank.swift */; };
 		19D403C31F1ACCDD00D9A334 /* MagicTower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D403C21F1ACCDD00D9A334 /* MagicTower.swift */; };
 		19D403C51F1AD6BF00D9A334 /* fireball.wav in Resources */ = {isa = PBXBuildFile; fileRef = 19D403C41F1AD6BF00D9A334 /* fireball.wav */; };
 		19D403C91F1AD72900D9A334 /* FlameProjectile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D403C81F1AD72900D9A334 /* FlameProjectile.swift */; };
@@ -98,6 +99,7 @@
 		19A9F5C11F8941620024EEB4 /* UIEdgeInsets+Margins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIEdgeInsets+Margins.swift"; path = "Helpers/UIEdgeInsets+Margins.swift"; sourceTree = "<group>"; };
 		19B4118B1F894CC6005F664E /* ModalNodeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ModalNodeController.swift; path = Common/ModalNodeController.swift; sourceTree = "<group>"; };
 		19C47C0C1F0C57BC005A1B29 /* Augment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Augment.swift; path = Entities/Constructs/Augment.swift; sourceTree = "<group>"; };
+		19C4F1CF1FAE29AF005B114F /* Bank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Bank.swift; path = Entities/Constructs/Bank.swift; sourceTree = "<group>"; };
 		19D403C21F1ACCDD00D9A334 /* MagicTower.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MagicTower.swift; path = Entities/Constructs/MagicTower.swift; sourceTree = "<group>"; };
 		19D403C41F1AD6BF00D9A334 /* fireball.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fireball.wav; sourceTree = "<group>"; };
 		19D403C81F1AD72900D9A334 /* FlameProjectile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlameProjectile.swift; path = Entities/Projectile/FlameProjectile.swift; sourceTree = "<group>"; };
@@ -235,13 +237,11 @@
 		199712AD1EEC4DAA00940A60 /* Constructs */ = {
 			isa = PBXGroup;
 			children = (
+				19C4F1CE1FAE2980005B114F /* Generator */,
+				19C4F1CD1FAE2969005B114F /* Shooting */,
 				19C47C0C1F0C57BC005A1B29 /* Augment.swift */,
 				199712AE1EEC4E0D00940A60 /* Construct.swift */,
-				19F658551EECABB10030A700 /* ArrowTower.swift */,
-				19D403C21F1ACCDD00D9A334 /* MagicTower.swift */,
 				19F658571EECAD290030A700 /* UnitSpawner.swift */,
-				19F658591EECADD70030A700 /* FundsGenerator.swift */,
-				19ECBB731EF5B4A800A51539 /* ProjectileShooter.swift */,
 			);
 			name = Constructs;
 			sourceTree = "<group>";
@@ -262,6 +262,25 @@
 				199712B01EECA3D200940A60 /* Dashboard */,
 			);
 			name = UI;
+			sourceTree = "<group>";
+		};
+		19C4F1CD1FAE2969005B114F /* Shooting */ = {
+			isa = PBXGroup;
+			children = (
+				19ECBB731EF5B4A800A51539 /* ProjectileShooter.swift */,
+				19F658551EECABB10030A700 /* ArrowTower.swift */,
+				19D403C21F1ACCDD00D9A334 /* MagicTower.swift */,
+			);
+			name = Shooting;
+			sourceTree = "<group>";
+		};
+		19C4F1CE1FAE2980005B114F /* Generator */ = {
+			isa = PBXGroup;
+			children = (
+				19C4F1CF1FAE29AF005B114F /* Bank.swift */,
+				19F658591EECADD70030A700 /* FundsGenerator.swift */,
+			);
+			name = Generator;
 			sourceTree = "<group>";
 		};
 		19D6CAF31EE44A96000338D1 /* Enemies */ = {
@@ -472,6 +491,7 @@
 				2507373E1E32BA120011B603 /* GameScene.swift in Sources */,
 				190562C31F0DB479006447A1 /* EnemySpawner.swift in Sources */,
 				19B4118C1F894CC7005F664E /* ModalNodeController.swift in Sources */,
+				19C4F1D01FAE29AF005B114F /* Bank.swift in Sources */,
 				2563DA251E6BCECE008A3FBA /* Utils.swift in Sources */,
 				1974181A1F1A94B900C2EB52 /* RadialMenuNode.swift in Sources */,
 				1996FAC81F0F209E003FB62D /* LevelDescriptor.swift in Sources */,

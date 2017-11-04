@@ -19,7 +19,6 @@ protocol GamePropertiesObserver: class {
 }
 
 class GameProperties {
-
     static var funds: Int = 250 {
         didSet {
             for subscriber in subscribers {

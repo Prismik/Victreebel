@@ -8,22 +8,30 @@
 
 import SpriteKit
 
-class FundsGenerator {
-    private let generationDelay: TimeInterval
-    private let generatedFunds: Int
+protocol FundsGeneratorDelegate: class {
+    func computeFunds() -> Int
+}
 
-    init(delay: TimeInterval, periodicFunds: Int) {
+class FundsGenerator {
+    weak var delegate: FundsGeneratorDelegate?
+
+    private let generationDelay: TimeInterval
+    private var timer: Timer = Timer()
+
+    init(delay: TimeInterval) {
         self.generationDelay = delay
-        self.generatedFunds = periodicFunds
-        SKAction.repeatForever(
-            SKAction.sequence([
-                SKAction.wait(forDuration: generationDelay),
-                SKAction.run(generate)
-            ])
-        )
     }
 
-    func generate() {
-        GameProperties.funds += generatedFunds
+    deinit {
+        timer.invalidate()
+    }
+
+    @objc
+    private func generate() {
+        GameProperties.funds += delegate?.computeFunds() ?? 0
+    }
+
+    func enable() {
+        timer = Timer.scheduledTimer(timeInterval: generationDelay, target: self, selector: #selector(FundsGenerator.generate), userInfo: nil, repeats: true)
     }
 }

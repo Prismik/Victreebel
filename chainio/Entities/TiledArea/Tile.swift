@@ -62,7 +62,7 @@ class Tile: SKSpriteNode {
     }
 
     func availableUpgrades() -> [Construct.Type] {
-        return construct?.availableUpgrades() ?? [ArrowTower.self, MagicTower.self, ArrowTower.self]
+        return construct?.availableUpgrades() ?? [ArrowTower.self, MagicTower.self, Bank.self]
     }
 
     func build(entity: Construct.Type) {

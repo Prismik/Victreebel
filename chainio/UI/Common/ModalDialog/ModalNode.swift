@@ -8,13 +8,19 @@
 
 import SpriteKit
 
-class ModalNode: SKSpriteNode {
-
+protocol ModalNodeDelegate: class {
+    func didOpen()
+    func didClose()
+    func willOpen()
+    func willClose()
 }
 
-extension SKScene {
+class ModalNode: SKSpriteNode {
     func present() {
+
+    }
+
+    func dismiss() {
         
     }
 }
-

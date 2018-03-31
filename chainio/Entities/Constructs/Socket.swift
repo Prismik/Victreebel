@@ -9,11 +9,17 @@
 import SpriteKit
 
 // Can hold a rune
-class Socket {
+class Socket: SKSpriteNode {
+    private static let texture: SKTexture = SKTexture(imageNamed: "socket")
     private(set) var rune: Rune?
     let central: Bool
     init(central: Bool) {
         self.central = central
+        super.init(texture: Socket.texture,color: UIColor.clear, size: Socket.texture.size())
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func canAttach(rune: Rune) -> Bool {

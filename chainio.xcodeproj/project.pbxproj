@@ -74,6 +74,7 @@
 		25DA00DB1E7476F1002321CE /* WeaponRail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DA00DA1E7476F1002321CE /* WeaponRail.swift */; };
 		25DA00DD1E74774B002321CE /* Turret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DA00DC1E74774B002321CE /* Turret.swift */; };
 		25DA00DF1E748A74002321CE /* turrets.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 25DA00DE1E748A74002321CE /* turrets.atlas */; };
+		25EA0EBE206FD335002503BD /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EA0EBD206FD335002503BD /* Palette.swift */; };
 		25EEC767206F09800064C91D /* Rune.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EEC766206F09800064C91D /* Rune.swift */; };
 		25EEC769206F09C80064C91D /* CoreRune.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EEC768206F09C80064C91D /* CoreRune.swift */; };
 		25EEC76B206F0A7B0064C91D /* LesserRune.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EEC76A206F0A7B0064C91D /* LesserRune.swift */; };
@@ -152,6 +153,7 @@
 		25DA00DA1E7476F1002321CE /* WeaponRail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeaponRail.swift; path = Entities/WeaponRail.swift; sourceTree = "<group>"; };
 		25DA00DC1E74774B002321CE /* Turret.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Turret.swift; path = Entities/Turret.swift; sourceTree = "<group>"; };
 		25DA00DE1E748A74002321CE /* turrets.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = turrets.atlas; sourceTree = "<group>"; };
+		25EA0EBD206FD335002503BD /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Palette.swift; path = UI/Palette.swift; sourceTree = "<group>"; };
 		25EEC766206F09800064C91D /* Rune.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Rune.swift; path = Entities/Runes/Rune.swift; sourceTree = "<group>"; };
 		25EEC768206F09C80064C91D /* CoreRune.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoreRune.swift; path = Entities/Runes/CoreRune.swift; sourceTree = "<group>"; };
 		25EEC76A206F0A7B0064C91D /* LesserRune.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LesserRune.swift; path = Entities/Runes/LesserRune.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 			children = (
 				197418151F1A8A6A00C2EB52 /* Common */,
 				199712B01EECA3D200940A60 /* Dashboard */,
+				25EA0EBD206FD335002503BD /* Palette.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -532,6 +535,7 @@
 				2511C8EC1E68DF2100992CD2 /* Points.swift in Sources */,
 				25EEC76D206F0B300064C91D /* RuneStatistic.swift in Sources */,
 				1961E7FD1EE978A100B0E665 /* TiledArea.swift in Sources */,
+				25EA0EBE206FD335002503BD /* Palette.swift in Sources */,
 				196937151EDA119D0073624F /* MathExtensions.swift in Sources */,
 				1969371A1EDB7F820073624F /* CGVector+Overloads.swift in Sources */,
 				190562C51F0DB5E7006447A1 /* PathManager.swift in Sources */,

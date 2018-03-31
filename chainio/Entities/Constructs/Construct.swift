@@ -8,9 +8,10 @@
 
 import SpriteKit
 
+// Structure to which we can attach runes to enable various effects
 protocol Construct: class {
-    var price: Int { get }
+    var price: Int { get } // Deprecate this
     static var uiTexture: SKTexture { get }
-    func enableAugment()
-    func availableUpgrades() -> [Construct.Type]
+    func enableAugment() // Deprecate this
+    func availableUpgrades() -> [Construct.Type] // Deprecate this ?
 }

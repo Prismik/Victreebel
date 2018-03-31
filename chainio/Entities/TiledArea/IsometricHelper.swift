@@ -12,7 +12,7 @@ class IsometricHelper {
     private let tileSize: CGSize
     private let initialPoint: CGPoint
     init(tileSize: CGSize, initialPoint: CGPoint) {
-        self.tileSize = Tile.texture.size()
+        self.tileSize = tileSize
         self.initialPoint = initialPoint
     }
 

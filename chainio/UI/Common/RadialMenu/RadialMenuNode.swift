@@ -29,7 +29,7 @@ class RadialMenuNode: SKCropNode {
         maskNode = mask
         xScale = 0
         yScale = 0
-        zPosition = 999999
+        zPosition = LayerManager.ui + 1
         isUserInteractionEnabled = true
         let child = SKSpriteNode(texture: texture, color: .clear, size: CGSize(width: 20, height: 20))
         addChild(child)

@@ -28,3 +28,13 @@ extension SKColor {
         self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: alpha)
     }
 }
+
+extension BinaryInteger {
+    func times(_ closure: () -> Void) {
+        var copy = self
+        while copy > 0 {
+            closure()
+            copy -= 1
+        }
+    }
+}

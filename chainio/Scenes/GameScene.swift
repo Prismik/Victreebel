@@ -12,7 +12,7 @@ import GameplayKit
 class GameScene: SKScene, SKPhysicsContactDelegate {
     var tiledArea: TiledArea!
     var infoArea: Dashboard!
-
+    let inventoryPanel = InventoryPanel(size: CGSize(width: 350, height: 68))
     var coinLabel: SKLabelNode = SKLabelNode(text: "\(GameProperties.funds)")
     var lifeLabel: SKLabelNode = SKLabelNode(text: "\(GameProperties.life)")
     var scoreLabel: SKLabelNode = SKLabelNode(text: "\(GameProperties.score)")
@@ -51,6 +51,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         tiledArea.delegate = infoArea
         addChild(tiledArea)
 
+        inventoryPanel.position = CGPoint(x: 125, y: size.height - 15)
+        inventoryPanel.zPosition = LayerManager.ui
+        addChild(inventoryPanel)
+
         settingsButton = Button(defaultTexture: SKTexture(imageNamed: "normal.png"),
                                 disabledTexture: SKTexture(imageNamed: "disabled.png"),
                                 selectedTexture: SKTexture(imageNamed: "pressed.png"))
@@ -58,7 +62,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         settingsButton.setAction(action: {
 
         })
-        settingsButton.zPosition = 99999
+        settingsButton.zPosition = LayerManager.ui
         addChild(settingsButton)
 
         physicsWorld.gravity = CGVector.zero

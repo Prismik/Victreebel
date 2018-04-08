@@ -24,7 +24,7 @@ class EnemyManager {
         if let containerScene = scene {
             let enemy = Enemy()
             enemy.position = position
-            enemy.zPosition = 999
+            enemy.zPosition = LayerManager.foreground + 1
             enemy.zRotation = direction.angle
             enemy.physicsBody?.velocity = direction
             containerScene.addChild(enemy)
@@ -36,7 +36,7 @@ class EnemyManager {
         if let containerScene = scene {
             let enemy = Enemy()
             enemy.position = position
-            enemy.zPosition = 999
+            enemy.zPosition = LayerManager.foreground + 1
             containerScene.addChild(enemy)
             EnemyManager.enemies.append(enemy)
             enemy.run(PathManager.createBezierPath(using: points, with: interval))

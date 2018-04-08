@@ -38,7 +38,7 @@ class TiledArea: SKSpriteNode {
         physicsBody = nil
         anchorPoint = CGPoint(x: 0, y: 0)
         let numberOfTiles = horizontalTileCount * verticalTileCount
-        let startingZIndex: CGFloat = 100
+        let startingZIndex: CGFloat = LayerManager.foreground
         for index in 0..<numberOfTiles {
             let tile: Tile = Tile(size: tileSize, type: TileTypes.selectable)
             tile.zPosition = CGFloat(numberOfTiles / 10) + startingZIndex - CGFloat(index / 10)

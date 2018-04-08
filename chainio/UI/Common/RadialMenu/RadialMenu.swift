@@ -34,7 +34,7 @@ class RadialMenu: SKSpriteNode {
         self.animationDuration = animationDuration
         super.init(texture: nil, color: SKColor.clear, size: CGSize.zero)
 
-        zPosition = 99999
+        zPosition = LayerManager.ui
         alpha = 0
     }
     

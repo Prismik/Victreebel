@@ -38,10 +38,19 @@ class Button: SKSpriteNode {
         }
     }
 
+    private let label: SKLabelNode
+    var text: String? {
+        didSet {
+            label.text = text
+        }
+    }
+
     init(defaultTexture: SKTexture, disabledTexture: SKTexture, selectedTexture: SKTexture) {
         self.defaultTexture = defaultTexture
         self.disabledTexture = disabledTexture
         self.selectedTexture = selectedTexture
+        label = SKLabelNode(text: nil)
+        label.horizontalAlignmentMode = .center
         super.init(texture: defaultTexture, color: SKColor.clear, size: defaultTexture.size())
 
         isUserInteractionEnabled = true

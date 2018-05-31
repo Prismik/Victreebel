@@ -9,6 +9,5 @@
 import SpriteKit
 
 protocol Rune {
-    var name: String { get }
-    var texture: SKTexture { get }
+    
 }

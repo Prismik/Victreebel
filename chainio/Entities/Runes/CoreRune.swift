@@ -8,22 +8,22 @@
 
 import SpriteKit
 
-class CoreRune: Rune {
-    var name: String {
-        return "Core Rune"
-    }
-    
-    var texture: SKTexture {
-        fatalError("texture has not been implemented")
-    }
-
-    var augments: [Rune] = []
+class CoreRune: SKSpriteNode, Rune {
+    private(set) var augments: [Rune] = []
     
     var level: Int = 1
 //    let attackSpeed = RuneStatistic(name: "Attack speed", baseValue: 0.625, growthValue: 0.125, rune: self)
 //    let range = RuneStatistic(name: "Range", baseValue: 100, growthValue: 2.25, rune: self)
     
-    init() {
+    // TODO change to a better way of getting specific runes
+    init(typeIndex: Int) {
+        let texture = SKTexture(imageNamed: "rune0\(typeIndex).png")
+        super.init(texture: texture, color: .clear, size: texture.size())
         
+        name = "Core Rune"
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

@@ -18,10 +18,18 @@ class LesserRune: Rune {
         fatalError("texture has not been implemented")
     }
 
+    var principalAffinity: Affinity = .none
+    var secondaryAffinity: Affinity = .none
+
     let attackSpeedBonus: Double
     let rangeBonus: Double
     init(attackSpeedBonus: Double, rangeBonus: Double) {
         self.attackSpeedBonus = attackSpeedBonus
         self.rangeBonus = rangeBonus
+    }
+    
+    func configure(affinity: Affinity, secondaryAffinity: Affinity) {
+        self.principalAffinity = affinity
+        self.secondaryAffinity = secondaryAffinity
     }
 }

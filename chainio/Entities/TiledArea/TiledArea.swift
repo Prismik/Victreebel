@@ -27,7 +27,6 @@ class TiledArea: SKSpriteNode {
     weak var delegate: TileSelectionDelegate?
 
     private let spawner: EnemySpawner = EnemySpawner()
-    fileprivate var currentController: RadialMenuController?
 
     init(desiredSize: CGSize, horizontalTileCount: Int, verticalTileCount: Int) {
         self.horizontalTileCount = horizontalTileCount
@@ -129,18 +128,20 @@ class TiledArea: SKSpriteNode {
 
 extension TiledArea: TileSelectionDelegate {
     func didSelect(tile: Tile) {
-        if currentSelectedTile == nil {
-            currentSelectedTile = tile
-            showSelectionIndicator(on: tile)
-
-            let newController: RadialMenuController = RadialMenuController()
-            present(newController, on: tile)
-
-            delegate?.didSelect(tile: tile)
-        } else {
-            unselectCurrentTile()
-            currentController?.dismiss()
-        }
+//        if currentSelectedTile == nil {
+//            currentSelectedTile = tile
+//            showSelectionIndicator(on: tile)
+//
+//            let newController: RadialMenuController = RadialMenuController()
+//            present(newController, on: tile)
+//
+//            delegate?.didSelect(tile: tile)
+//        } else {
+//            unselectCurrentTile()
+//            currentController?.dismiss()
+//        }
+        
+        delegate?.didSelect(tile: tile)
     }
 
     private func unselectCurrentTile() {
@@ -158,16 +159,16 @@ extension TiledArea: TileSelectionDelegate {
         indicator.show()
     }
 
-    private func present(_ controller: RadialMenuController, on tile: Tile) {
-        let options: [TileRadialMenuNodeData] = tile.availableUpgrades().map({ upgrade in
-            return TileRadialMenuNodeData(texture: upgrade.uiTexture, action: {
-                tile.build(entity: upgrade)
-                self.unselectCurrentTile()
-            })
-        })
-
-        controller.present(from: tile, at: tile.center, with: options, completion: {
-            self.currentController = controller
-        })
-    }
+//    private func present(_ controller: RadialMenuController, on tile: Tile) {
+//        let options: [TileRadialMenuNodeData] = tile.availableUpgrades().map({ upgrade in
+//            return TileRadialMenuNodeData(texture: upgrade.uiTexture, action: {
+//                tile.build(entity: upgrade)
+//                self.unselectCurrentTile()
+//            })
+//        })
+//
+//        controller.present(from: tile, at: tile.center, with: options, completion: {
+//            self.currentController = controller
+//        })
+//    }
 }

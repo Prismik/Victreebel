@@ -12,7 +12,6 @@ class ContentManager {
     class func loadTextures() {
         Explosion.loadTextures()
         Enemy.loadTextures()
-        Turret.loadTextures()
         FlameProjectile.loadTextures()
     }
 }

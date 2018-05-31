@@ -14,4 +14,8 @@ class RuneFactory {
         let range = 50 + Double(arc4random_uniform(150))
         return LesserRune(attackSpeedBonus: ias, rangeBonus: range)
     }
+    
+    class func evolveRune(_ rune: LesserRune) {
+        
+    }
 }

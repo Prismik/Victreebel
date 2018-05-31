@@ -72,11 +72,10 @@
 		25A8ECFF1E7B2ECA002B523F /* explosion_2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 25A8ECFC1E7B2ECA002B523F /* explosion_2.wav */; };
 		25A8ED001E7B2ECA002B523F /* explosion_3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 25A8ECFD1E7B2ECA002B523F /* explosion_3.wav */; };
 		25BB620E1E688B2000086BFB /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BB620D1E688B2000086BFB /* Enemy.swift */; };
-		25C058791E6E661200AD3800 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C058781E6E661200AD3800 /* Player.swift */; };
+		25C75FC020BF173300859499 /* Affinity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C75FBF20BF173300859499 /* Affinity.swift */; };
+		25C968C220C093AF00A00128 /* RuneFoundry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C968C120C093AF00A00128 /* RuneFoundry.swift */; };
 		25CF49B71E5776F800A121DD /* Explosion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25CF49B61E5776F800A121DD /* Explosion.swift */; };
 		25D95C6B1E5A1ED300ADC97B /* explosion.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 25D95C6A1E5A1ED300ADC97B /* explosion.atlas */; };
-		25DA00DB1E7476F1002321CE /* WeaponRail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DA00DA1E7476F1002321CE /* WeaponRail.swift */; };
-		25DA00DD1E74774B002321CE /* Turret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DA00DC1E74774B002321CE /* Turret.swift */; };
 		25DA00DF1E748A74002321CE /* turrets.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 25DA00DE1E748A74002321CE /* turrets.atlas */; };
 		25EA0EBE206FD335002503BD /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EA0EBD206FD335002503BD /* Palette.swift */; };
 		25EEC767206F09800064C91D /* Rune.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EEC766206F09800064C91D /* Rune.swift */; };
@@ -155,11 +154,10 @@
 		25A8ECFC1E7B2ECA002B523F /* explosion_2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion_2.wav; sourceTree = "<group>"; };
 		25A8ECFD1E7B2ECA002B523F /* explosion_3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion_3.wav; sourceTree = "<group>"; };
 		25BB620D1E688B2000086BFB /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Enemy.swift; path = Entities/Enemies/Enemy.swift; sourceTree = "<group>"; };
-		25C058781E6E661200AD3800 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Player.swift; path = Entities/Player.swift; sourceTree = "<group>"; };
+		25C75FBF20BF173300859499 /* Affinity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Affinity.swift; path = Entities/Runes/Affinity.swift; sourceTree = "<group>"; };
+		25C968C120C093AF00A00128 /* RuneFoundry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RuneFoundry.swift; path = UI/RuneConfigurator/RuneFoundry.swift; sourceTree = "<group>"; };
 		25CF49B61E5776F800A121DD /* Explosion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Explosion.swift; path = Entities/Explosion.swift; sourceTree = "<group>"; };
 		25D95C6A1E5A1ED300ADC97B /* explosion.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = explosion.atlas; sourceTree = "<group>"; };
-		25DA00DA1E7476F1002321CE /* WeaponRail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeaponRail.swift; path = Entities/WeaponRail.swift; sourceTree = "<group>"; };
-		25DA00DC1E74774B002321CE /* Turret.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Turret.swift; path = Entities/Turret.swift; sourceTree = "<group>"; };
 		25DA00DE1E748A74002321CE /* turrets.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = turrets.atlas; sourceTree = "<group>"; };
 		25EA0EBD206FD335002503BD /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Palette.swift; path = UI/Palette.swift; sourceTree = "<group>"; };
 		25EEC766206F09800064C91D /* Rune.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Rune.swift; path = Entities/Runes/Rune.swift; sourceTree = "<group>"; };
@@ -282,6 +280,7 @@
 		199712B31EECA57D00940A60 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				25C968C020C0905D00A00128 /* RuneConfigurator */,
 				197418151F1A8A6A00C2EB52 /* Common */,
 				199712B01EECA3D200940A60 /* Dashboard */,
 				25EA0EBD206FD335002503BD /* Palette.swift */,
@@ -413,6 +412,14 @@
 			name = Scenes;
 			sourceTree = "<group>";
 		};
+		25C968C020C0905D00A00128 /* RuneConfigurator */ = {
+			isa = PBXGroup;
+			children = (
+				25C968C120C093AF00A00128 /* RuneFoundry.swift */,
+			);
+			name = RuneConfigurator;
+			sourceTree = "<group>";
+		};
 		25CF49B51E5776BE00A121DD /* Entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -424,9 +431,6 @@
 				196937161EDB07370073624F /* Projectile */,
 				25CF49B61E5776F800A121DD /* Explosion.swift */,
 				2511C8EB1E68DF2100992CD2 /* Points.swift */,
-				25C058781E6E661200AD3800 /* Player.swift */,
-				25DA00DA1E7476F1002321CE /* WeaponRail.swift */,
-				25DA00DC1E74774B002321CE /* Turret.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -439,6 +443,7 @@
 				25EEC76A206F0A7B0064C91D /* LesserRune.swift */,
 				25EEC76C206F0B300064C91D /* RuneStatistic.swift */,
 				2525F0C8207980BC0060B07C /* RuneFactory.swift */,
+				25C75FBF20BF173300859499 /* Affinity.swift */,
 			);
 			name = Runes;
 			sourceTree = "<group>";
@@ -529,7 +534,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				259148C31E7653620038C49E /* SKAction+CustomActions.swift in Sources */,
-				25C058791E6E661200AD3800 /* Player.swift in Sources */,
 				19F6585A1EECADD70030A700 /* FundsGenerator.swift in Sources */,
 				2525F0CB2079835D0060B07C /* InventoryPanel.swift in Sources */,
 				25A397E41E6DC4A9001FDBEC /* MainMenuScene.swift in Sources */,
@@ -546,14 +550,15 @@
 				25EEC767206F09800064C91D /* Rune.swift in Sources */,
 				190562C31F0DB479006447A1 /* EnemySpawner.swift in Sources */,
 				19B4118C1F894CC7005F664E /* ModalNodeController.swift in Sources */,
+				25C968C220C093AF00A00128 /* RuneFoundry.swift in Sources */,
 				19C4F1D01FAE29AF005B114F /* Bank.swift in Sources */,
 				2563DA251E6BCECE008A3FBA /* Utils.swift in Sources */,
 				1974181A1F1A94B900C2EB52 /* RadialMenuNode.swift in Sources */,
 				1996FAC81F0F209E003FB62D /* LevelDescriptor.swift in Sources */,
-				25DA00DB1E7476F1002321CE /* WeaponRail.swift in Sources */,
 				2592A1AC1E772C47008F7DEE /* Dashboard.swift in Sources */,
 				197418181F1A94A300C2EB52 /* RadialMenu.swift in Sources */,
 				19FEBFC81F510F45007FDFF7 /* Button.swift in Sources */,
+				25C75FC020BF173300859499 /* Affinity.swift in Sources */,
 				2511C8EC1E68DF2100992CD2 /* Points.swift in Sources */,
 				25EEC76D206F0B300064C91D /* RuneStatistic.swift in Sources */,
 				1961E7FD1EE978A100B0E665 /* TiledArea.swift in Sources */,
@@ -572,7 +577,6 @@
 				255B9BFB1E688F94009CA6A4 /* Projectile.swift in Sources */,
 				19ECBB741EF5B4A800A51539 /* ProjectileShooter.swift in Sources */,
 				19D403C31F1ACCDD00D9A334 /* MagicTower.swift in Sources */,
-				25DA00DD1E74774B002321CE /* Turret.swift in Sources */,
 				25CF49B71E5776F800A121DD /* Explosion.swift in Sources */,
 				19F658561EECABB10030A700 /* ArrowTower.swift in Sources */,
 				1996FAC31F0F0280003FB62D /* Element.swift in Sources */,

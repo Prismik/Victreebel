@@ -67,6 +67,9 @@
 		259148C31E7653620038C49E /* SKAction+CustomActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259148C21E7653620038C49E /* SKAction+CustomActions.swift */; };
 		2592A1AC1E772C47008F7DEE /* Dashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2592A1AB1E772C47008F7DEE /* Dashboard.swift */; };
 		2592A1AE1E773268008F7DEE /* laser.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2592A1AD1E773268008F7DEE /* laser.wav */; };
+		25A1B24D20CDA593006B4250 /* Sprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A1B24C20CDA593006B4250 /* Sprite.swift */; };
+		25A1B24F20CDAF3E006B4250 /* SKNode+RemoveChildRecursive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A1B24E20CDAF3E006B4250 /* SKNode+RemoveChildRecursive.swift */; };
+		25A1B25120CDBCFC006B4250 /* RockOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A1B25020CDBCFC006B4250 /* RockOverlay.swift */; };
 		25A397E41E6DC4A9001FDBEC /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A397E31E6DC4A9001FDBEC /* MainMenuScene.swift */; };
 		25A8ECFE1E7B2ECA002B523F /* explosion_1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 25A8ECFB1E7B2ECA002B523F /* explosion_1.wav */; };
 		25A8ECFF1E7B2ECA002B523F /* explosion_2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 25A8ECFC1E7B2ECA002B523F /* explosion_2.wav */; };
@@ -149,6 +152,9 @@
 		259148C21E7653620038C49E /* SKAction+CustomActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKAction+CustomActions.swift"; sourceTree = "<group>"; };
 		2592A1AB1E772C47008F7DEE /* Dashboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dashboard.swift; path = UI/Dashboard/Dashboard.swift; sourceTree = "<group>"; };
 		2592A1AD1E773268008F7DEE /* laser.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = laser.wav; sourceTree = "<group>"; };
+		25A1B24C20CDA593006B4250 /* Sprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Sprite.swift; path = Helpers/Sprite.swift; sourceTree = "<group>"; };
+		25A1B24E20CDAF3E006B4250 /* SKNode+RemoveChildRecursive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "SKNode+RemoveChildRecursive.swift"; path = "Helpers/SKNode+RemoveChildRecursive.swift"; sourceTree = "<group>"; };
+		25A1B25020CDBCFC006B4250 /* RockOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RockOverlay.swift; path = UI/RuneConfigurator/RockOverlay.swift; sourceTree = "<group>"; };
 		25A397E31E6DC4A9001FDBEC /* MainMenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainMenuScene.swift; path = Scenes/MainMenuScene.swift; sourceTree = "<group>"; };
 		25A8ECFB1E7B2ECA002B523F /* explosion_1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion_1.wav; sourceTree = "<group>"; };
 		25A8ECFC1E7B2ECA002B523F /* explosion_2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion_2.wav; sourceTree = "<group>"; };
@@ -251,6 +257,8 @@
 				199712AB1EEC333900940A60 /* CGSize+Overloads.swift */,
 				19A9F5BF1F890F8A0024EEB4 /* SKNode+Positions.swift */,
 				19A9F5C11F8941620024EEB4 /* UIEdgeInsets+Margins.swift */,
+				25A1B24C20CDA593006B4250 /* Sprite.swift */,
+				25A1B24E20CDAF3E006B4250 /* SKNode+RemoveChildRecursive.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -416,6 +424,7 @@
 			isa = PBXGroup;
 			children = (
 				25C968C120C093AF00A00128 /* RuneFoundry.swift */,
+				25A1B25020CDBCFC006B4250 /* RockOverlay.swift */,
 			);
 			name = RuneConfigurator;
 			sourceTree = "<group>";
@@ -534,6 +543,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				259148C31E7653620038C49E /* SKAction+CustomActions.swift in Sources */,
+				25A1B24D20CDA593006B4250 /* Sprite.swift in Sources */,
 				19F6585A1EECADD70030A700 /* FundsGenerator.swift in Sources */,
 				2525F0CB2079835D0060B07C /* InventoryPanel.swift in Sources */,
 				25A397E41E6DC4A9001FDBEC /* MainMenuScene.swift in Sources */,
@@ -568,6 +578,7 @@
 				190562C51F0DB5E7006447A1 /* PathManager.swift in Sources */,
 				19D403C91F1AD72900D9A334 /* FlameProjectile.swift in Sources */,
 				25EEC769206F09C80064C91D /* CoreRune.swift in Sources */,
+				25A1B24F20CDAF3E006B4250 /* SKNode+RemoveChildRecursive.swift in Sources */,
 				25BB620E1E688B2000086BFB /* Enemy.swift in Sources */,
 				19C47C0D1F0C57BC005A1B29 /* Augment.swift in Sources */,
 				2525F0D0207A72980060B07C /* LayerManager.swift in Sources */,
@@ -584,6 +595,7 @@
 				1911886C1F33C38E00410116 /* HealthIndicator.swift in Sources */,
 				19D403CB1F1ADBFA00D9A334 /* ContentManager.swift in Sources */,
 				199712B91EECA73F00940A60 /* GameProperties.swift in Sources */,
+				25A1B25120CDBCFC006B4250 /* RockOverlay.swift in Sources */,
 				1996FAC51F0F151C003FB62D /* CollisionManager.swift in Sources */,
 				19D6CAF91EE48806000338D1 /* PropagatingProjectile.swift in Sources */,
 				19D6CAF71EE487F1000338D1 /* GravityProjectile.swift in Sources */,
